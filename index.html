@@ -202,9 +202,8 @@
                             class="fa-solid fa-globe mr-2"></i>Hello, World 👋</p>
                     <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">I'm <span
                             class="text-brand-700 dark:text-brand-400">Rajsekhar Acharya</span></h1>
-                    <p class="mt-4 text-slate-700 dark:text-slate-300 text-lg">Full‑Stack Developer specializing in
-                        <strong>Spring Boot</strong> & <strong>Angular</strong>. I build scalable SaaS backends, clean
-                        UIs, and cloud‑ready services.
+                    <p class="mt-4 text-slate-700 dark:text-slate-300 text-lg">
+                        Backend brains, frontend polish: Spring Boot, Angular, and cloud-native delivery.
                     </p>
                     <div class="mt-6 flex flex-wrap items-center gap-3">
                         <a href="#projects"
@@ -237,27 +236,69 @@
 
     <!-- About -->
     <section id="about" class="py-16 border-t border-slate-900/10 dark:border-white/10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl font-bold"><i class="fa-solid fa-user mr-2 text-brand-600 dark:text-brand-400"></i>About
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold">
+                <i class="fa-solid fa-user mr-2 text-brand-600 dark:text-brand-400"></i>About
             </h2>
-            <p class="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">I design and deliver end‑to‑end web apps:
-                domain models, REST APIs, auth, observability, and crisp Angular front‑ends. Recently, I’ve focused on
-                <strong>multi‑tenant SaaS</strong>, <strong>restaurant POS</strong>, <strong>accounting
-                    backends</strong>, and <strong>asset management</strong>. I care about performance, DX, and
-                maintainability.
+
+            <p class="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+                I’m a Full-Stack Developer focused on building scalable web apps and microservices with
+                <strong>Spring Boot</strong> and <strong>Angular</strong>. I design and optimize RESTful APIs, implement
+                <strong>multi-tenancy</strong> for SaaS (subdomains, per-tenant DB, migrations), and maintain robust
+                data layers
+                on <strong>PostgreSQL</strong> and <strong>MySQL</strong>. I’ve integrated <strong>JWT</strong> and
+                <strong>OAuth2</strong>
+                with role-based access (RBAC), containerized services with <strong>Docker</strong>, and streamlined
+                delivery via
+                <strong>CI/CD</strong> pipelines. Day-to-day I collaborate cross-functionally, tune queries and indexes,
+                harden
+                security, and ship features that balance performance, DX, and maintainability.
             </p>
-            <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-slate-700 dark:text-slate-300">
-                <li><i class="fa-solid fa-location-dot text-brand-600 dark:text-brand-400 mr-2"></i> Kolkata, India</li>
-                <li><i class="fa-solid fa-briefcase text-brand-600 dark:text-brand-400 mr-2"></i> Full‑Stack Developer
+
+            <!-- Highlights -->
+            <ul class="mt-6 space-y-2 text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-diagram-project mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Microservices & APIs:</strong> Spring Boot services, clean REST contracts,
+                        OpenAPI/Swagger docs.</span>
                 </li>
-                <li><i class="fa-solid fa-envelope text-brand-600 dark:text-brand-400 mr-2"></i> <a
-                        href="mailto:rajsekhar.acharya@gmail.com" class="underline">rajsekhar.acharya@gmail.com</a></li>
-                <li><i class="fa-solid fa-link text-brand-600 dark:text-brand-400 mr-2"></i> <a
-                        href="https://rajsekharacharya.github.io" class="underline"
-                        target="_blank">rajsekharacharya.github.io</a></li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-cloud mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Multi-tenant SaaS:</strong> Subdomain routing, per-tenant databases, Flyway
+                        migrations, RBAC.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-shield-halved mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Security:</strong> Spring Security with JWT & OAuth2, token scopes/claims, secure
+                        configuration.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-database mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Data:</strong> PostgreSQL/MySQL schema design, query/index tuning, auditing &
+                        migrations.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-boxes-stacked mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Delivery:</strong> Dockerized apps, environment configs, CI/CD for tests & automated
+                        deployments.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-palette mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Frontend:</strong> Angular (component-driven UIs, RxJS, forms), clean UX with
+                        performance in mind.</span>
+                </li>
             </ul>
+
+            <!-- Current focus (optional) -->
+            <div class="mt-6 text-sm text-slate-600 dark:text-slate-400">
+                <i class="fa-solid fa-bullseye text-brand-600 dark:text-brand-400 mr-2"></i>
+                Currently building: <strong>Cuisine Command</strong> (restaurant POS), and maintaining
+                <strong>Multi-Tenant SaaS</strong>, <strong>Financial Accounting</strong>, and <strong>Resource
+                    Forge</strong>.
+            </div>
         </div>
     </section>
+
 
     <!-- Skills -->
     <section id="skills" class="py-16 border-t border-slate-900/10 dark:border-white/10">
@@ -556,7 +597,7 @@
 
     <!-- Experience -->
     <section id="experience" class="py-16 border-t border-slate-900/10 dark:border-white/10">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 class="text-2xl font-bold"><i
                     class="fa-solid fa-briefcase mr-2 text-brand-600 dark:text-brand-400"></i>Experience</h2>
             <ol class="mt-6 space-y-6">
@@ -653,7 +694,7 @@
 
     <!-- Contact -->
     <section id="contact" class="py-16 border-t border-slate-900/10 dark:border-white/10">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <h2 class="text-2xl font-bold"><i
                     class="fa-solid fa-envelope mr-2 text-brand-600 dark:text-brand-400"></i>Get in touch</h2>
             <p class="mt-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-comment mr-2"></i>Open to roles,
