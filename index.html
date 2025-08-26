@@ -64,6 +64,31 @@
     <script defer data-domain="rajsekharacharya.github.io" src="https://plausible.io/js/script.js"></script>
 
     <style>
+        .skill-chip {
+            @apply px-3 py-1.5 rounded-full text-sm border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition;
+        }
+
+        .skill-chip[aria-pressed="true"] {
+            @apply bg-brand-600 text-white border-transparent;
+        }
+
+        .skill-badge {
+            height: 36px;
+            /* a hair taller than before */
+            border-radius: 10px;
+            box-shadow: 0 10px 22px -14px rgba(6, 182, 212, .5);
+            filter: grayscale(.15) saturate(1.1);
+            opacity: .95;
+            transition: transform .25s ease, box-shadow .25s ease, filter .25s ease, opacity .25s ease;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px) scale(1.03);
+            filter: none;
+            opacity: 1;
+            box-shadow: 0 16px 34px -14px rgba(6, 182, 212, .65);
+        }
+
         .card {
             box-shadow: 0 10px 25px -12px rgba(2, 132, 199, .35);
             transition: transform .3s ease, box-shadow .3s ease;
@@ -237,72 +262,166 @@
     <!-- Skills -->
     <section id="skills" class="py-16 border-t border-slate-900/10 dark:border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl font-bold"><i
-                    class="fa-solid fa-code mr-2 text-brand-600 dark:text-brand-400"></i>Skills</h2>
-            <div class="mt-6 badge-row flex flex-wrap items-center" data-animate>
-                <img alt="Java"
-                    src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"
-                    loading="lazy" />
-                <img alt="Spring Boot"
-                    src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"
-                    loading="lazy" />
-                <img alt="Angular"
-                    src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"
-                    loading="lazy" />
-                <img alt="TypeScript"
-                    src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
-                    loading="lazy" />
-                <img alt="JavaScript"
-                    src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                    loading="lazy" />
-                <img alt="HTML5"
-                    src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
-                    loading="lazy" />
-                <img alt="CSS3"
-                    src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"
-                    loading="lazy" />
-                <img alt="Docker"
-                    src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"
-                    loading="lazy" />
-                <img alt="Jenkins"
-                    src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"
-                    loading="lazy" />
-                <img alt="Kafka"
-                    src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"
-                    loading="lazy" />
-                <img alt="Git"
-                    src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"
-                    loading="lazy" />
-                <img alt="Linux"
-                    src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
-                    loading="lazy" />
-                <img alt="MySQL"
-                    src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"
-                    loading="lazy" />
-                <img alt="PostgreSQL"
-                    src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white"
-                    loading="lazy" />
-                <img alt="MongoDB"
-                    src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"
-                    loading="lazy" />
-                <img alt="Oracle"
-                    src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"
-                    loading="lazy" />
-                <img alt="Node.js"
-                    src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"
-                    loading="lazy" />
-                <img alt="GraphQL"
-                    src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white"
-                    loading="lazy" />
-                <img alt="AWS"
-                    src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"
-                    loading="lazy" />
-                <img alt="Thymeleaf"
-                    src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white"
-                    loading="lazy" />
-                <img alt="Python"
-                    src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
-                    loading="lazy" />
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold">
+                        <i class="fa-solid fa-code mr-2 text-brand-600 dark:text-brand-400"></i>
+                        Skills
+                    </h2>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                        Hover to highlight • Tap chips to filter
+                    </p>
+                </div>
+
+                <!-- Filter chips -->
+                <!-- Filter chips -->
+                <div id="skillChips" class="flex flex-wrap gap-2" role="tablist" aria-label="Skill filters">
+                    <button data-skill-filter="all" aria-pressed="true" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border border-transparent
+           bg-brand-600 text-white shadow transition">
+                        <i class="fa-solid fa-layer-group"></i><span>All</span>
+                    </button>
+
+                    <button data-skill-filter="backend" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-server"></i><span>Backend</span>
+                    </button>
+
+                    <button data-skill-filter="frontend" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-code"></i><span>Frontend</span>
+                    </button>
+
+                    <button data-skill-filter="devops" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-gears"></i><span>DevOps</span>
+                    </button>
+
+                    <button data-skill-filter="db" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-database"></i><span>Databases</span>
+                    </button>
+
+                    <button data-skill-filter="other" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i><span>Other</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Badges: horizontal scroll on mobile, wraps on larger screens -->
+            <div class="mt-6 badge-row flex gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible snap-x snap-mandatory"
+                data-animate id="skillsGrid">
+                <!-- Wrap each badge in a span so we can show/hide smoothly -->
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="Java"
+                        src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="Spring Boot"
+                        src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="Angular"
+                        src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="TypeScript"
+                        src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="JavaScript"
+                        src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="HTML5"
+                        src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="CSS3"
+                        src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Docker"
+                        src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Jenkins"
+                        src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="other" alt="Apache Kafka"
+                        src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Git"
+                        src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Linux"
+                        src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="MySQL"
+                        src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="PostgreSQL"
+                        src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="MongoDB"
+                        src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="Oracle"
+                        src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="Node.js"
+                        src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="GraphQL"
+                        src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="AWS"
+                        src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="other" alt="Thymeleaf"
+                        src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="other" alt="Python"
+                        src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+                </span>
             </div>
         </div>
     </section>
@@ -564,7 +683,7 @@
                     aria-label="WhatsApp">
                     <i class="fa-brands fa-whatsapp text-[#25D366]"></i> WhatsApp
                 </a>
-                
+
                 <a href="mailto:rajsekhar.acharya@gmail.com"
                     class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"
                     aria-label="Email Rajsekhar">
@@ -680,6 +799,39 @@
       "knowsAbout": ["Spring Boot", "Angular", "SaaS", "Microservices", "REST APIs", "MySQL", "PostgreSQL", "Kafka"]
     }
   </script>
+    <script>
+        // Filter logic + active styling for chips
+        const chips = document.querySelectorAll('#skillChips [data-skill-filter]');
+        const wrappers = document.querySelectorAll('#skillsGrid > span'); // each badge wrapper
+
+        const activeClasses = 'bg-brand-600 text-white border-transparent shadow'.split(' ');
+        const inactiveClasses = 'text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-slate-900/50 border-slate-900/10 dark:border-white/10'.split(' ');
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                // aria + classes
+                chips.forEach(c => {
+                    c.setAttribute('aria-pressed', 'false');
+                    c.classList.remove(...activeClasses);
+                    c.classList.add(...inactiveClasses, 'border');
+                });
+                chip.setAttribute('aria-pressed', 'true');
+                chip.classList.add(...activeClasses);
+                chip.classList.remove(...inactiveClasses);
+
+                // filtering
+                const tag = chip.dataset.skillFilter;
+                wrappers.forEach(w => {
+                    const img = w.querySelector('.skill-badge');
+                    const groups = (img.dataset.groups || '').split(',').map(s => s.trim());
+                    const show = tag === 'all' || groups.includes(tag);
+                    w.style.display = show ? '' : 'none';
+                });
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
