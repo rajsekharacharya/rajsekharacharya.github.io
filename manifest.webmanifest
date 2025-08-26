@@ -1,20 +1,11 @@
 {
-  "name": "Rajsekhar Acharya – Full-Stack Developer",
-  "short_name": "Rajsekhar",
+  "name": "Rajsekhar Acharya – Portfolio",
+  "short_name": "RA Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0b1220",
+  "background_color": "#0f172a",
   "theme_color": "#06b6d4",
   "icons": [
-    {
-      "src": "images/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "images/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
+    { "src": "/favicon.ico", "sizes": "48x48 64x64", "type": "image/x-icon" }
   ]
 }
