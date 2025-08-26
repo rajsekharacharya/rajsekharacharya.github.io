@@ -1,902 +1,673 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en" class="dark scroll-smooth"> <!-- default to dark; toggleable -->
 
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rajsekhar Acharya – Full‑Stack Developer (Spring Boot & Angular)</title>
+    <meta name="description"
+        content="Portfolio of Rajsekhar Acharya – Full‑Stack Developer specializing in Spring Boot, Angular, SaaS platforms, and cloud‑native services." />
+    <link rel="canonical" href="https://rajsekharacharya.github.io/" />
 
-	<!--- basic page needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>Rajsekhar Acharya - Code, Develop, Deliver</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-	<!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Tailwind (CDN) & theme config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+                    colors: { brand: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63' } },
+                    keyframes: {
+                        floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+                        fadein: { '0%': { opacity: 0, transform: 'translateY(12px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } }
+                    },
+                    animation: { floaty: 'floaty 5s ease-in-out infinite', 'fade-in': 'fadein .7s ease-out both', shimmer: 'shimmer 2.5s linear infinite' }
+                }
+            }
+        }
+    </script>
 
-	<!-- CSS
-   ================================================== -->
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/vendor.css">
+    <!-- Icons -->
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/000000?v=4" />
+    <meta name="theme-color" content="#06b6d4" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-	<!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
+    <!-- Social meta -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rajsekhar Acharya – Full-Stack Developer" />
+    <meta property="og:description" content="Spring Boot • Angular • SaaS • Microservices" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rajsekharacharya.github.io/" />
+    <meta property="og:image" content="https://rajsekharacharya.github.io/images/og-banner.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
-	<!-- favicons
-	================================================== -->
-	<link rel="shortcut icon" href="favicon.ico" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rajsekhar Acharya – Full-Stack Developer" />
+    <meta name="twitter:description" content="Spring Boot • Angular • SaaS • Microservices" />
+    <meta name="twitter:image" content="https://rajsekharacharya.github.io/images/og-banner.png" />
+    <meta name="twitter:image:alt" content="Rajsekhar Acharya — Full-Stack Developer | Spring Boot & Angular" />
 
+
+    <!-- Optional analytics (Plausible) -->
+    <script defer data-domain="rajsekharacharya.github.io" src="https://plausible.io/js/script.js"></script>
+
+    <style>
+        .card {
+            box-shadow: 0 10px 25px -12px rgba(2, 132, 199, .35);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -12px rgba(2, 132, 199, .45);
+        }
+
+        .badge-row img {
+            margin: 4px;
+            height: 26px;
+        }
+
+        .prose a {
+            text-decoration: underline;
+        }
+
+        .glass {
+            backdrop-filter: blur(8px);
+        }
+
+        .shine {
+            background: linear-gradient(110deg, rgba(255, 255, 255, .06) 8%, rgba(255, 255, 255, .14) 18%, rgba(255, 255, 255, .06) 33%);
+            background-size: 200% 100%;
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important
+            }
+        }
+    </style>
 </head>
 
-<body id="top">
-
-	<!-- header 
-   ================================================== -->
-	<header>
-		<div class="row">
-
-			<div class="top-bar">
-				<a class="menu-toggle" href="#"><span>Menu</span></a>
-
-				<div class="logo">
-					<a href="https://rajsekharacharya.github.io/">logo</a>
-				</div>
-
-				<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll" href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll" href="#about" title="">About</a></li>
-						<li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
-						<li><a class="smoothscroll" href="#portfolio" title="">Portfolio</a></li>
-						<li><a class="smoothscroll" href="#services" title="">Services</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
-					</ul>
-				</nav>
-			</div> <!-- /top-bar -->
-
-		</div> <!-- /row -->
-	</header> <!-- /header -->
-
-	<!-- intro section
-   ================================================== -->
-	<section id="intro">
-
-		<div class="intro-overlay"></div>
-
-		<div class="intro-content">
-			<div class="row">
-
-				<div class="col-twelve">
-
-					<h5>Hello, World.</h5>
-					<h1>I'm Rajsekhar Acharya.</h1>
-
-					<p class="intro-position">
-						<span>Java Full-Stack Developer</span>
-					</p>
-
-					<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
-
-				</div>
-
-			</div>
-		</div> <!-- /intro-content -->
-
-		<ul class="intro-social">
-			<li><a href="https://facebook.com/rajsekhar.acharya" target="_blank" rel="noopener noreferrer"><i
-						class="fa fa-facebook"></i></a></li>
-			<li><a href="https://x.com/imrajsekhar" target="_blank" rel="noopener noreferrer"><i
-						class="fa fa-twitter"></i></a></li>
-			<li><a href="https://www.instagram.com/rajsekhar_acharya/" target="_blank" rel="noopener noreferrer"><i
-						class="fa fa-instagram"></i></a></li>
-			<li><a href="https://www.linkedin.com/in/rajsekhar-acharya" target="_blank" rel="noopener noreferrer"><i
-						class="fa fa-linkedin"></i></a></li>
-			<li><a href="https://github.com/RajsekharAcharya" target="_blank" rel="noopener noreferrer"><i
-						class="fa fa-github"></i></a></li>
-
-		</ul> <!-- /intro-social -->
-
-	</section> <!-- /intro -->
-
-
-	<!-- about section
-   ================================================== -->
-	<section id="about">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-
-				<h5>About</h5>
-				<h1>Let me introduce myself.</h1>
-
-				<div class="intro-info">
-
-					<img src="images/profile-pic.png" alt="Profile Picture">
-
-					<p class="lead">Passionate full-stack developer specializing in Spring Boot and Angular, with a
-						knack for building scalable and user-friendly web applications. Skilled in both front-end and
-						back-end technologies, I deliver comprehensive solutions that are robust and high-performing.
-						Always eager to tackle new challenges and stay updated with the latest tech trends. Let's
-						connect and explore potential collaborations!</p>
-				</div>
-
-			</div>
-		</div> <!-- /section-intro -->
-
-		<div class="row about-content">
-
-			<div class="col-six tab-full">
-
-				<h3>Profile</h3>
-				<p>Full-stack developer skilled in Spring Boot and Angular, delivering scalable, high-quality web
-					applications. Passionate about solving complex challenges and staying at the forefront of tech
-					innovations.</p>
-
-				<ul class="info-list">
-					<li>
-						<strong>Fullname:</strong>
-						<span>Rajsekhar Acharya</span>
-					</li>
-					<li>
-						<strong>Birth Date:</strong>
-						<span>July 29, 1994</span>
-					</li>
-					<li>
-						<strong>Job:</strong>
-						<span>Full Stack Developer</span>
-					</li>
-					<li>
-						<strong>Website:</strong>
-						<span><a href="https://rajsekharacharya.github.io/" target="_blank"
-								rel="noopener noreferrer">rajsekharacharya.github.io</a></span>
-					</li>
-
-					<li>
-						<strong>Email:</strong>
-						<span><a href="mailto:rajsekhar.acharya@gmail.com">rajsekhar.acharya@gmail.com</a></span>
-					</li>
-
-
-				</ul> <!-- /info-list -->
-
-			</div>
-
-			<div class="col-six tab-full">
-
-				<h3>Skills</h3>
-				<p>Proficient in Java, Spring Boot, Angular, JavaScript, TypeScript, and RESTful APIs. Experienced with
-					Docker, DevOps practices, MySQL, PostgreSQL, and Git. Skilled in building scalable, responsive web
-					applications and optimizing performance.</p>
-
-				<ul class="skill-bars">
-					<li>
-						<div class="progress percent80"><span>80%</span></div>
-						<strong>Java</strong>
-					</li>
-					<li>
-						<div class="progress percent85"><span>85%</span></div>
-						<strong>Spring Boot</strong>
-					</li>
-					<li>
-						<div class="progress percent60"><span>60%</span></div>
-						<strong>Angular</strong>
-					</li>
-					<li>
-						<div class="progress percent75"><span>75%</span></div>
-						<strong>Database</strong>
-					</li>
-					<li>
-						<div class="progress percent60"><span>60%</span></div>
-						<strong>DevOps</strong>
-					</li>
-				</ul> <!-- /skill-bars -->
-
-
-			</div>
-
-		</div>
-
-		<div class="row button-section">
-			<div class="col-twelve">
-				<a href="#" title="Download CV" class="button button-primary"
-					onclick="window.open('./RajsekharAcharyaResume.pdf', '_blank', 'noopener,noreferrer'); return false;">Download
-					CV</a>
-			</div>
-
-		</div>
-
-	</section> <!-- /process-->
-
-
-	<!-- resume Section
-   ================================================== -->
-	<section id="resume" class="grey-section">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Resume</h5>
-				<h1>Explore My Credentials</h1>
-				<p class="lead">Discover more about my professional background, including my education, certifications,
-					and work experience. This section highlights my journey as a Full-Stack Developer, showcasing my
-					skills and achievements across various roles and projects.</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-
-		<div class="row resume-timeline">
-
-			<div class="col-twelve resume-header">
-
-				<h2>Work Experience</h2>
-
-			</div> <!-- /resume-header -->
-
-			<div class="col-twelve">
-
-				<div class="timeline-wrap">
-
-					<div class="timeline-block">
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-						<div class="timeline-header">
-							<h3>Full-Stack Developer</h3>
-							<p>January 2023 - Present</p>
-						</div>
-						<div class="timeline-content">
-							<h4>VARELI TECNAC Pvt. Ltd.</h4>
-							<p>Working as a Full-Stack Developer, handling both front-end and back-end development
-								tasks. Leading projects, optimizing performance, and integrating new technologies to
-								build robust and scalable applications.</p>
-						</div>
-					</div> <!-- /timeline-block -->
-
-					<div class="timeline-block">
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-						<div class="timeline-header">
-							<h3>Senior Back-End Developer</h3>
-							<p>January 2022 - December 2022</p>
-						</div>
-						<div class="timeline-content">
-							<h4>VARELI TECNAC Pvt. Ltd.</h4>
-							<p>Focused on back-end development, leading server-side programming, database management,
-								and API integration. Enhanced application performance and scalability while mentoring
-								junior developers.</p>
-						</div>
-					</div> <!-- /timeline-block -->
-<!-- 
-					<div class="timeline-block">
-						<div class="timeline-ico">
-							<i class="fa fa-briefcase"></i>
-						</div>
-						<div class="timeline-header">
-							<h3>Junior Back-End Developer</h3>
-							<p>May 2019 - December 2021</p>
-						</div>
-						<div class="timeline-content">
-							<h4>Logiciel Infotech</h4>
-							<p>Started as a Junior Back-End Developer, working on server-side tasks, building APIs, and
-								managing databases. Gained valuable experience in development processes and contributed
-								to various projects.</p>
-						</div>
-					</div>  -->
-
-				</div> <!-- /timeline-wrap -->
-
-
-			</div> <!-- /col-twelve -->
-
-		</div> <!-- /resume-timeline -->
-
-		<div class="row resume-timeline">
-
-			<div class="col-twelve resume-header">
-
-				<h2>Education</h2>
-
-			</div> <!-- /resume-header -->
-
-			<div class="col-twelve">
-
-				<div class="timeline-wrap">
-
-					<div class="timeline-block">
-
-						<div class="timeline-ico">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-
-						<div class="timeline-header">
-							<h3>Bachelor's Degree in Electrical Engineering</h3>
-							<p>August 2013 - July 2017</p>
-						</div>
-
-						<div class="timeline-content">
-							<h4>Academy of Technology</h4>
-							<p>Completed a Bachelor’s Degree in Electrical Engineering with a focus on computer
-								applications, database management, and emerging technologies. Gained practical
-								experience working on various projects and exploring new tech advancements in the field.
-							</p>
-						</div>
-
-					</div> <!-- /timeline-block -->
-
-				</div> <!-- /timeline-wrap -->
-
-			</div> <!-- /col-twelve -->
-
-
-		</div> <!-- /resume-timeline -->
-
-	</section> <!-- /features -->
-
-
-	<!-- Portfolio Section
-   ================================================== -->
-	<section id="portfolio">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Portfolio</h5>
-				<h1>Explore My Recent Projects</h1>
-				<p class="lead">Welcome to my portfolio! Here, you'll find a collection of my recent work showcasing my
-					skills in full-stack development, including projects involving Java, Spring Boot, Angular, and more.
-					Dive in to see how I've applied my expertise to build innovative solutions and tackle complex
-					challenges.</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-
-		<div class="row portfolio-content">
-
-			<div class="col-twelve">
-
-				<!-- Portfolio Wrapper -->
-				<div id="folio-wrapper" class="block-1-2 block-mob-full stack">
-
-					<!-- Portfolio Item 1: Omni Channer Retail App -->
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/portfolio/omni.jpg" alt="Omni Channel Retail App">
-							<a href="#modal-01" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Omni Channel Retail App</h3>
-										<span class="folio-types">ERP System</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<!-- Portfolio Item 2: Asset Management -->
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/portfolio/asset-managemnt.jpg" alt="Asset Management">
-							<a href="#modal-02" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Asset Management</h3>
-										<span class="folio-types">SaaS Application</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<!-- Portfolio Item 3: Smart Raw Material Procurement System -->
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/portfolio/srmps.jpg" alt="Smart Raw Material Procurement System">
-							<a href="#modal-03" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Smart Raw Material Procurement System</h3>
-										<span class="folio-types">Procurement System</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<!-- Portfolio Item 4: Damodar -->
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/portfolio/damodar.jpg" alt="Damodar">
-							<a href="#modal-04" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Damodar</h3>
-										<span class="folio-types">PLC Data Analyzer</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<!-- Portfolio Item 5: Art-Rickshaw -->
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/portfolio/art.jpg" alt="Art-Rickshaw">
-							<a href="#modal-05" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">Art-Rickshaw</h3>
-										<span class="folio-types">Art Gallery & Craft Center</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<!-- Portfolio Item 6: V-Commute -->
-					<div class="bgrid folio-item">
-						<div class="item-wrap">
-							<img src="images/portfolio/vcommute.jpg" alt="V-Commute">
-							<a href="#modal-06" class="overlay">
-								<div class="folio-item-table">
-									<div class="folio-item-cell">
-										<h3 class="folio-title">V-Commute</h3>
-										<span class="folio-types">Human Tracking Application</span>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div> <!-- /folio-item -->
-
-					<!-- Modal Popups -->
-					<!-- Modal 1 -->
-					<div id="modal-01" class="popup-modal slider mfp-hide">
-						<div class="media">
-							<img src="images/portfolio/omni.jpg" alt="Omni Channel Retail App Details">
-						</div>
-						<div class="description-box">
-							<h4>Omni Channel Retail App</h4>
-							<p>A retail back office ERP system managing order generation, vendor management, sales
-								reporting, and HR data. Built with Spring Boot, AngularJS, Thymeleaf, and MySQL. We are
-								now migrating this microservice as a phase 2 update.</p>
-							<div class="categories">ERP System</div>
-						</div>
-						<div class="link-box">
-							<a href="#" class="popup-modal-dismiss">Close</a>
-						</div>
-					</div> <!-- /modal-01 -->
-
-					<!-- Modal 2 -->
-					<div id="modal-02" class="popup-modal slider mfp-hide">
-						<div class="media">
-							<img src="images/portfolio/asset-managemnt.jpg" alt="Asset Management Details">
-						</div>
-						<div class="description-box">
-							<h4>Asset Management</h4>
-							<p>A dynamic SaaS application for managing any type of asset with a focus on flexibility and
-								efficiency. Built with Angular, Spring Boot, and MySQL.</p>
-							<div class="categories">SaaS Application</div>
-						</div>
-						<div class="link-box">
-							<a href="#" class="popup-modal-dismiss">Close</a>
-						</div>
-					</div> <!-- /modal-02 -->
-
-					<!-- Modal 3 -->
-					<div id="modal-03" class="popup-modal slider mfp-hide">
-						<div class="media">
-							<img src="images/portfolio/srmps.jpg"
-								alt="Smart Raw Material Procurement System Details">
-						</div>
-						<div class="description-box">
-							<h4>Smart Raw Material Procurement System</h4>
-							<p>An integrated system to streamline raw material procurement, including token generation,
-								weighing, and billing with multi-plant and multi-company support. Built with Spring
-								Boot, AngularJS, and MySQL.</p>
-							<div class="categories">Procurement System</div>
-						</div>
-						<div class="link-box">
-							<a href="#" class="popup-modal-dismiss">Close</a>
-						</div>
-					</div> <!-- /modal-03 -->
-
-					<!-- Modal 4 -->
-					<div id="modal-04" class="popup-modal slider mfp-hide">
-						<div class="media">
-							<img src="images/portfolio/damodar.jpg" alt="Damodar Details">
-						</div>
-						<div class="description-box">
-							<h4>Damodar</h4>
-							<p>A real-time PLC data analyzer application built with Teltonika devices, Node.js, MySQL,
-								and Spring Boot. It processes and analyzes data from PLCs, offering dynamic adjustments
-								based on PLC registers.</p>
-							<div class="categories">PLC Data Analyzer</div>
-						</div>
-						<div class="link-box">
-							<a href="#" class="popup-modal-dismiss">Close</a>
-						</div>
-					</div> <!-- /modal-04 -->
-
-					<!-- Modal 5 -->
-					<div id="modal-05" class="popup-modal slider mfp-hide">
-						<div class="media">
-							<img src="images/portfolio/art.jpg" alt="Art-Rickshaw Details">
-						</div>
-						<div class="description-box">
-							<h4>Art-Rickshaw</h4>
-							<p>A comprehensive application for an art gallery and craft center, featuring both a website
-								for public viewing and a back-office system for managing assets, craft classes, and
-								bookings. Built with Spring Boot, Angular, and MySQL.</p>
-							<div class="categories">Art Gallery & Craft Center</div>
-						</div>
-						<div class="link-box">
-							<a href="#" class="popup-modal-dismiss">Close</a>
-						</div>
-					</div> <!-- /modal-05 -->
-
-					<!-- Modal 6 -->
-					<div id="modal-06" class="popup-modal slider mfp-hide">
-						<div class="media">
-							<img src="images/portfolio/vcommute.jpg" alt="V-Commute Details">
-						</div>
-						<div class="description-box">
-							<h4>V-Commute</h4>
-							<p>A real-time human tracking application for sales-based jobs, featuring attendance and
-								movement tracking. Built with Spring Boot, Google Maps, AngularJS, and MySQL. It
-								prevents misuse and monitors client visits with accurate location data.</p>
-							<div class="categories">Human Tracking Application</div>
-						</div>
-						<div class="link-box">
-							<a href="#" class="popup-modal-dismiss">Close</a>
-						</div>
-					</div> <!-- /modal-06 -->
-
-				</div> <!-- /portfolio-wrapper -->
-
-			</div> <!-- /twelve -->
-
-		</div> <!-- /portfolio-content -->
-
-
-	</section> <!-- /portfolio -->
-
-	<!-- services Section
-   ================================================== -->
-	<section id="services">
-
-		<div class="overlay"></div>
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Services</h5>
-				<h1>What Can I Do for You?</h1>
-				<p class="lead">I offer a range of services tailored to meet your needs. From full-stack development and
-					API integration to custom software solutions and system optimization, I’m here to help bring your
-					projects to life. Let’s collaborate to create innovative solutions that drive success and growth.
-				</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-
-		<div class="row services-content">
-
-			<div id="owl-slider" class="owl-carousel services-list">
-
-				<div class="service">
-					<span class="icon"><i class="fa fa-code"></i></span>
-					<div class="service-content">
-						<h3>Full-Stack Development</h3>
-						<p class="desc">Expertise in both front-end and back-end development, creating robust and
-							scalable web applications. From building dynamic user interfaces to developing complex
-							server-side logic, I deliver comprehensive solutions tailored to your needs.</p>
-					</div>
-				</div> <!-- /service -->
-
-				<div class="service">
-					<span class="icon"><i class="fa fa-codepen"></i></span>
-					<div class="service-content">
-						<h3>API Integration</h3>
-						<p class="desc">Seamlessly integrate third-party APIs and services into your applications.
-							Whether it’s payment gateways, social media platforms, or custom APIs, I ensure smooth and
-							efficient integration to enhance functionality and user experience.</p>
-					</div>
-				</div> <!-- /service -->
-
-				<div class="service">
-					<span class="icon"><i class="fa fa-cloud"></i></span>
-					<div class="service-content">
-						<h3>DevOps & Cloud Solutions</h3>
-						<p class="desc">Streamline your development and deployment processes with DevOps practices and
-							cloud solutions. I provide expertise in continuous integration/continuous deployment
-							(CI/CD), cloud infrastructure management, and automation to improve efficiency and
-							scalability.</p>
-					</div>
-				</div> <!-- /service -->
-
-			</div> <!-- /services-list -->
-
-		</div> <!-- /services-content -->
-
-
-	</section> <!-- /services -->
-
-
-	<!-- stats Section
-   ================================================== -->
-	<section id="stats" class="count-up">
-
-		<div class="row">
-			<div class="col-twelve">
-
-				<div class="block-1-6 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-pencil-ruler"></i>
-						</div>
-
-						<h3 class="stat-count">
-							25
-						</h3>
-
-						<h5 class="stat-title">
-							Projects Completed
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-users"></i>
-						</div>
-
-						<h3 class="stat-count">
-							10
-						</h3>
-
-						<h5 class="stat-title">
-							Happy Clients
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-badge"></i>
-						</div>
-
-						<h3 class="stat-count">
-							5
-						</h3>
-
-						<h5 class="stat-title">
-							Awards Received
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-light-bulb"></i>
-						</div>
-
-						<h3 class="stat-count">
-							31
-						</h3>
-
-						<h5 class="stat-title">
-							Crazy Ideas
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-cup"></i>
-						</div>
-
-						<h3 class="stat-count">
-							20
-						</h3>
-
-						<h5 class="stat-title">
-							Coffee Cups
-						</h5>
-
-					</div> <!-- /stat -->
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-clock"></i>
-						</div>
-
-						<h3 class="stat-count">
-							7200
-						</h3>
-
-						<h5 class="stat-title">
-							Hours
-						</h5>
-
-					</div> <!-- /stat -->
-
-				</div> <!-- /stats-list -->
-
-			</div> <!-- /twelve -->
-		</div> <!-- /row -->
-
-	</section> <!-- /stats -->
-
-
-	<!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Contact</h5>
-				<h1>I'd Love to Hear from You</h1>
-				<p class="lead">I’m eager to connect and explore new opportunities. Whether you have a question, want to
-					discuss a project, or are interested in working together, I'm open to conversations. I'm excited
-					about the possibility of joining a new company and contributing to innovative and challenging
-					projects. Feel free to reach out to discuss how we can collaborate.</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-
-		<!-- <div class="row contact-form">
-
-			<div class="col-twelve">
-
-				<form name="contactForm" id="contactForm" method="post" action="">
-					<fieldset>
-
-						<div class="form-field">
-							<input name="contactName" type="text" id="contactName" placeholder="Name" value=""
-								minlength="2" required="">
-						</div>
-						<div class="form-field">
-							<input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value=""
-								required="">
-						</div>
-						<div class="form-field">
-							<input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
-						</div>
-						<div class="form-field">
-							<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10"
-								cols="50" required=""></textarea>
-						</div>
-						<div class="form-field">
-							<button class="submitform">Submit</button>
-							<div id="submit-loader">
-								<div class="text-loader">Sending...</div>
-								<div class="s-loader">
-									<div class="bounce1"></div>
-									<div class="bounce2"></div>
-									<div class="bounce3"></div>
-								</div>
-							</div>
-						</div>
-
-					</fieldset>
-				</form> 
-
-				<div id="message-warning">
-				</div>
-				<div id="message-success">
-					<i class="fa fa-check"></i>Your message was sent, thank you!<br>
-				</div>
-
-			</div>
-
-		</div>  -->
-
-		<div class="row contact-info">
-
-			<div class="col-four tab-full">
-
-				<div class="icon">
-					<i class="icon-pin"></i>
-				</div>
-
-				<h5>Where to find me</h5>
-
-				<p>
-					GC - 18/6, New Town<br>
-					Kolkata, WB<br>
-					700059 In
-				</p>
-
-			</div>
-
-			<div class="col-four tab-full collapse">
-
-				<div class="icon">
-					<i class="icon-mail"></i>
-				</div>
-
-				<h5>Email Me At</h5>
-
-				<p>rajsekhar.acharya@gmail.com<br>
-					rajsekhar.acharya29@gmail.com
-				</p>
-
-			</div>
-
-			<div class="col-four tab-full">
-
-				<div class="icon">
-					<i class="icon-phone"></i>
-				</div>
-
-				<h5>Call Me At</h5>
-
-				<p>Mobile: (+91) 8335898602
-				</p>
-
-			</div>
-
-		</div> <!-- /contact-info -->
-
-	</section> <!-- /contact -->
-
-
-	<!-- footer
-   ================================================== -->
-
-	<footer>
-		<div class="row">
-
-			<div class="col-six tab-full pull-right social">
-
-				<ul class="footer-social">
-					<li><a href="https://facebook.com/rajsekhar.acharya" target="_blank" rel="noopener noreferrer"><i
-								class="fa fa-facebook"></i></a></li>
-					<li><a href="https://x.com/imrajsekhar" target="_blank" rel="noopener noreferrer"><i
-								class="fa fa-twitter"></i></a></li>
-					<li><a href="https://www.instagram.com/rajsekhar_acharya/" target="_blank"
-							rel="noopener noreferrer"><i class="fa fa-instagram"></i></a></li>
-					<li><a href="https://in.linkedin.com/in/rajsekhar-acharya" target="_blank"
-							rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
-					<li><a href="https://github.com/RajsekharAcharya" target="_blank" rel="noopener noreferrer"><i
-								class="fa fa-github"></i></a></li>
-				</ul>
-
-			</div>
-
-			<div class="col-eight tab-full">
-				<div class="copyright">
-					<span>© Copyright 2024 </span>
-				</div>
-			</div>
-
-			<div id="go-top">
-				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-			</div>
-
-		</div> <!-- /row -->
-	</footer>
-
-	<div id="preloader">
-		<div id="loader"></div>
-	</div>
-
-	<!-- Java Script
-   ================================================== -->
-	<script src="js/jquery-2.1.3.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
-
+<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-brand-400/25">
+    <!-- Scroll progress bar -->
+    <div id="scrollbar" class="fixed top-0 left-0 h-1 bg-brand-500 z-[60]" style="width:0"></div>
+    <!-- Mobile overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden"></div>
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-14">
+                <a href="#top" class="font-semibold tracking-tight text-brand-700 dark:text-brand-300"><i
+                        class="fa-solid fa-home mr-2"></i>RAJSEKHAR ACHARYA</a>
+                <nav class="hidden md:flex items-center gap-6 text-sm text-slate-600 dark:text-slate-300">
+                    <a href="#about" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-user mr-1"></i>About</a>
+                    <a href="#skills" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-code mr-1"></i>Skills</a>
+                    <a href="#projects" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-rocket mr-1"></i>Projects</a>
+                    <a href="#experience" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-briefcase mr-1"></i>Experience</a>
+                    <a href="#all-projects" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-list mr-1"></i>See all</a>
+                    <a href="#contact" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-envelope mr-1"></i>Contact</a>
+                </nav>
+                <div class="flex items-center gap-2">
+                    <a href="https://rajsekharacharya.github.io/RajsekharAcharyaResume.pdf" target="_blank"
+                        class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium transition"><i
+                            class="fa-solid fa-file-lines"></i> Resume</a>
+                    <button id="themeToggle"
+                        class="p-2 rounded-lg border border-slate-900/10 dark:border-white/10 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                        title="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
+                    <button id="menuBtn"
+                        class="md:hidden p-2 rounded-lg border border-slate-900/10 dark:border-white/10 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                        aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile drawer -->
+        <div id="mobileNav"
+            class="md:hidden fixed top-0 left-0 h-full w-72 bg-white dark:bg-slate-900 border-r border-slate-900/10 dark:border-white/10 z-50 -translate-x-full transition-transform">
+            <div class="flex items-center justify-between px-4 h-14 border-b border-slate-900/10 dark:border-white/10">
+                <span class="font-semibold text-brand-700 dark:text-brand-300">Menu</span>
+                <button id="menuClose" class="p-2" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <nav class="p-4 space-y-2 text-slate-700 dark:text-slate-300">
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#about">About</a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#skills">Skills</a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    href="#projects">Projects</a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    href="#experience">Experience</a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#all-projects">See
+                    all</a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="relative overflow-hidden">
+        <div class="absolute -left-32 -top-24 w-72 h-72 rounded-full bg-brand-400/30 blur-3xl animate-floaty"></div>
+        <div class="absolute -right-24 top-40 w-80 h-80 rounded-full bg-brand-600/20 blur-3xl animate-floaty"
+            style="animation-delay:.8s"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div data-animate>
+                    <p class="text-brand-700 dark:text-brand-300 font-semibold"><i
+                            class="fa-solid fa-globe mr-2"></i>Hello, World 👋</p>
+                    <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">I'm <span
+                            class="text-brand-700 dark:text-brand-400">Rajsekhar Acharya</span></h1>
+                    <p class="mt-4 text-slate-700 dark:text-slate-300 text-lg">Full‑Stack Developer specializing in
+                        <strong>Spring Boot</strong> & <strong>Angular</strong>. I build scalable SaaS backends, clean
+                        UIs, and cloud‑ready services.</p>
+                    <div class="mt-6 flex flex-wrap items-center gap-3">
+                        <a href="#projects"
+                            class="ripple inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium transition"><i
+                                class="fa-solid fa-rocket"></i> View Projects</a>
+                        <a href="#contact"
+                            class="ripple inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-900/15 dark:border-white/15 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                                class="fa-solid fa-envelope"></i> Contact</a>
+                        <a href="https://github.com/rajsekharacharya" target="_blank"
+                            class="ripple inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-900/15 dark:border-white/15 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="mt-6 opacity-80 text-sm text-slate-700 dark:text-slate-300"><i
+                            class="fa-solid fa-map-marker-alt mr-2"></i>Kolkata, India • Open to opportunities</div>
+                </div>
+                <div class="md:justify-self-end" data-animate>
+                    <div class="relative">
+                        <img class="w-64 h-64 rounded-2xl object-cover ring-1 ring-slate-900/10 dark:ring-white/10 card"
+                            src="images/profile-pic.png" alt="Portrait of Rajsekhar Acharya" width="256" height="256"
+                            loading="eager" />
+                        <div
+                            class="absolute -bottom-4 -right-4 bg-white/80 dark:bg-slate-900/70 glass px-3 py-2 rounded-xl border border-slate-900/10 dark:border-white/10 text-sm text-slate-800 dark:text-slate-200">
+                            <i class="fa-solid fa-code"></i> 3.5+ years • Java / Angular</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold"><i class="fa-solid fa-user mr-2 text-brand-600 dark:text-brand-400"></i>About
+            </h2>
+            <p class="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">I design and deliver end‑to‑end web apps:
+                domain models, REST APIs, auth, observability, and crisp Angular front‑ends. Recently, I’ve focused on
+                <strong>multi‑tenant SaaS</strong>, <strong>restaurant POS</strong>, <strong>accounting
+                    backends</strong>, and <strong>asset management</strong>. I care about performance, DX, and
+                maintainability.</p>
+            <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-slate-700 dark:text-slate-300">
+                <li><i class="fa-solid fa-location-dot text-brand-600 dark:text-brand-400 mr-2"></i> Kolkata, India</li>
+                <li><i class="fa-solid fa-briefcase text-brand-600 dark:text-brand-400 mr-2"></i> Full‑Stack Developer
+                </li>
+                <li><i class="fa-solid fa-envelope text-brand-600 dark:text-brand-400 mr-2"></i> <a
+                        href="mailto:rajsekhar.acharya@gmail.com" class="underline">rajsekhar.acharya@gmail.com</a></li>
+                <li><i class="fa-solid fa-link text-brand-600 dark:text-brand-400 mr-2"></i> <a
+                        href="https://rajsekharacharya.github.io" class="underline"
+                        target="_blank">rajsekharacharya.github.io</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold"><i
+                    class="fa-solid fa-code mr-2 text-brand-600 dark:text-brand-400"></i>Skills</h2>
+            <div class="mt-6 badge-row flex flex-wrap items-center" data-animate>
+                <img alt="Java"
+                    src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"
+                    loading="lazy" />
+                <img alt="Spring Boot"
+                    src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"
+                    loading="lazy" />
+                <img alt="Angular"
+                    src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"
+                    loading="lazy" />
+                <img alt="TypeScript"
+                    src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
+                    loading="lazy" />
+                <img alt="JavaScript"
+                    src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+                    loading="lazy" />
+                <img alt="HTML5"
+                    src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
+                    loading="lazy" />
+                <img alt="CSS3"
+                    src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"
+                    loading="lazy" />
+                <img alt="Docker"
+                    src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"
+                    loading="lazy" />
+                <img alt="Jenkins"
+                    src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"
+                    loading="lazy" />
+                <img alt="Kafka"
+                    src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"
+                    loading="lazy" />
+                <img alt="Git"
+                    src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"
+                    loading="lazy" />
+                <img alt="Linux"
+                    src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
+                    loading="lazy" />
+                <img alt="MySQL"
+                    src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"
+                    loading="lazy" />
+                <img alt="PostgreSQL"
+                    src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white"
+                    loading="lazy" />
+                <img alt="MongoDB"
+                    src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"
+                    loading="lazy" />
+                <img alt="Oracle"
+                    src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white"
+                    loading="lazy" />
+                <img alt="Node.js"
+                    src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"
+                    loading="lazy" />
+                <img alt="GraphQL"
+                    src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white"
+                    loading="lazy" />
+                <img alt="AWS"
+                    src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"
+                    loading="lazy" />
+                <img alt="Thymeleaf"
+                    src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white"
+                    loading="lazy" />
+                <img alt="Python"
+                    src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
+                    loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-end justify-between gap-4">
+                <h2 class="text-2xl font-bold"><i
+                        class="fa-solid fa-rocket mr-2 text-brand-600 dark:text-brand-400"></i>Featured Projects</h2>
+                <a class="text-sm text-brand-700 dark:text-brand-300 underline" href="#all-projects"><i
+                        class="fa-solid fa-list mr-1"></i>See all</a>
+            </div>
+
+            <div class="mt-8 grid md:grid-cols-2 gap-6">
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-utensils mr-2"></i>Cuisine Command 🍲
+                        </h3>
+                        <a href="https://github.com/rajsekharacharya/cuisine-command" target="_blank"
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Cuisine Command on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Restaurant management app: POS, billing,
+                        stock/inventory, auth, email, file uploads.
+                        <span class="block mt-2 text-slate-500 dark:text-slate-400 text-sm">Spring Boot backend •
+                            Angular frontend</span>
+                    </p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Java 17+"
+                            src="https://img.shields.io/badge/Java-17%2B-orange?style=flat-square&logo=java"
+                            loading="lazy" />
+                        <img alt="Spring Boot 3"
+                            src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&logo=springboot&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Angular 19+"
+                            src="https://img.shields.io/badge/Angular-19%2B-DD0031?style=flat-square&logo=angular&logoColor=white"
+                            loading="lazy" />
+                        <img alt="License Apache"
+                            src="https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square"
+                            loading="lazy" />
+                    </div>
+                </article>
+
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-cloud mr-2"></i>Multi‑Tenant SaaS
+                            Platform 🚀</h3>
+                        <a href="https://github.com/rajsekharacharya/Multi-tenant-saas" target="_blank"
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Multi‑Tenant SaaS Platform on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Subdomain routing, tenant isolation (per‑DB),
+                        JWT/RBAC, Flyway provisioning, Swagger.</p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Java 17" src="https://img.shields.io/badge/Java-17-blue?style=flat-square&logo=java"
+                            loading="lazy" />
+                        <img alt="Spring Boot 3.3"
+                            src="https://img.shields.io/badge/Spring%20Boot-3.3.3-6DB33F?style=flat-square&logo=springboot&logoColor=white"
+                            loading="lazy" />
+                        <img alt="MySQL"
+                            src="https://img.shields.io/badge/MySQL-8%2B-4479A1?style=flat-square&logo=mysql&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Swagger"
+                            src="https://img.shields.io/badge/OpenAPI-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black"
+                            loading="lazy" />
+                    </div>
+                </article>
+
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-chart-line mr-2"></i>Account Management
+                            Software 📊</h3>
+                        <a href="https://github.com/rajsekharacharya/Financial-accounting" target="_blank"
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Account Management Software on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Transactions, ledgers, balance sheets, OTP,
+                        Indian currency number‑to‑words, auditing.</p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Spring Security"
+                            src="https://img.shields.io/badge/Spring%20Security-active-6DB33F?style=flat-square&logo=springsecurity&logoColor=white"
+                            loading="lazy" />
+                        <img alt="REST API"
+                            src="https://img.shields.io/badge/REST-API-000?style=flat-square&logo=fastapi&logoColor=white"
+                            loading="lazy" />
+                        <img alt="PostgreSQL"
+                            src="https://img.shields.io/badge/PostgreSQL-13%2B-4169E1?style=flat-square&logo=postgresql&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Maven"
+                            src="https://img.shields.io/badge/Maven-3.6%2B-C71A36?style=flat-square&logo=apachemaven&logoColor=white"
+                            loading="lazy" />
+                    </div>
+                </article>
+
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-tools mr-2"></i>Resource Forge – Asset
+                            Management 🛠️</h3>
+                        <a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank"
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Resource Forge on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Full lifecycle assets, AMC/insurance,
+                        depreciation, dashboards; Thymeleaf + AngularJS UI, Python collector.</p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Spring Boot"
+                            src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&logo=springboot&logoColor=white"
+                            loading="lazy" />
+                        <img alt="AngularJS"
+                            src="https://img.shields.io/badge/AngularJS-1.x-B52E31?style=flat-square&logo=angularjs&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Thymeleaf"
+                            src="https://img.shields.io/badge/Thymeleaf-3.x-005F0F?style=flat-square&logo=thymeleaf&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Python 3.12"
+                            src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white"
+                            loading="lazy" />
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold"><i
+                    class="fa-solid fa-briefcase mr-2 text-brand-600 dark:text-brand-400"></i>Experience</h2>
+            <ol class="mt-6 space-y-6">
+                <li class="card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="font-semibold"><i class="fa-solid fa-building mr-2"></i>VARELI TECNAC Pvt. Ltd. ·
+                            Senior Software Developer</p>
+                        <span class="text-sm text-slate-600 dark:text-slate-400">Jan 2022 – Present</span>
+                    </div>
+                    <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 space-y-1">
+                        <li><i class="fa-solid fa-cogs mr-2"></i>Architected and delivered Spring Boot microservices and
+                            Angular front‑ends for ERP/asset/SaaS products.</li>
+                        <li><i class="fa-solid fa-shield-halved mr-2"></i>Implemented JWT/RBAC auth, Flyway migrations,
+                            CI/CD, and observability; improved performance & DX.</li>
+                        <li><i class="fa-solid fa-code-branch mr-2"></i>Led back‑end API development, database design,
+                            and performance tuning for core services.</li>
+                        <li><i class="fa-solid fa-chalkboard-user mr-2"></i>Mentored junior engineers; established code
+                            quality gates and testing practices.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- See All Projects (filterable) -->
+    <section id="all-projects" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold"><i
+                            class="fa-solid fa-list mr-2 text-brand-600 dark:text-brand-400"></i>All Projects</h2>
+                    <p class="text-slate-600 dark:text-slate-400"><i class="fa-solid fa-filter mr-2"></i>Filter and
+                        browse every public project.</p>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input id="search" type="search" placeholder="Search projects..."
+                        class="flex-1 w-full sm:w-64 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                </div>
+            </div>
+
+            <div id="projectGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="https://github.com/rajsekharacharya/cuisine-command" target="_blank"
+                    data-title="Cuisine Command POS Restaurant"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-utensils mr-2"></i>Cuisine Command</h3>
+                        <i
+                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Restaurant POS • Billing • Inventory</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </a>
+
+                <a href="https://github.com/rajsekharacharya/Multi-tenant-saas" target="_blank"
+                    data-title="Multi Tenant SaaS Platform"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-cloud mr-2"></i>Multi‑Tenant SaaS Platform</h3>
+                        <i
+                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Subdomain Routing • JWT/RBAC • Flyway</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </a>
+
+                <a href="https://github.com/rajsekharacharya/Financial-accounting" target="_blank"
+                    data-title="Account Management Software Accounting"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-chart-line mr-2"></i>Account Management Software
+                        </h3>
+                        <i
+                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Balance Sheets • OTP • Auditing</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </a>
+
+                <a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank"
+                    data-title="Resource Forge Asset Management"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>Resource Forge</h3>
+                        <i
+                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Assets • AMC/Insurance • Reports</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold"><i
+                    class="fa-solid fa-envelope mr-2 text-brand-600 dark:text-brand-400"></i>Get in touch</h2>
+            <p class="mt-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-comment mr-2"></i>Open to roles,
+                consulting, and collaborations. Email is best!</p>
+
+            <!-- Optional no-backend contact form (Formspree) -->
+            <form class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4" method="POST"
+                action="https://formspree.io/f/mjkevpbw">
+                <input
+                    class="col-span-1 sm:col-span-1 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10"
+                    type="text" name="name" placeholder="Your name" required>
+                <input
+                    class="col-span-1 sm:col-span-1 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10"
+                    type="email" name="email" placeholder="Your email" required>
+                <button
+                    class="ripple col-span-1 sm:col-span-1 px-3 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white"
+                    type="submit">Send</button>
+                <textarea
+                    class="sm:col-span-3 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10"
+                    name="message" rows="4" placeholder="Message" required></textarea>
+            </form>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="mailto:rajsekhar.acharya@gmail.com"
+                    class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                        class="fa-solid fa-envelope text-brand-600 dark:text-brand-300"></i> Email</a>
+                <a href="https://linkedin.com/in/rajsekhar-acharya" target="_blank"
+                    class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                        class="fa-brands fa-linkedin text-brand-600 dark:text-brand-300"></i> LinkedIn</a>
+                <a href="https://github.com/rajsekharacharya" target="_blank"
+                    class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                        class="fa-brands fa-github text-brand-600 dark:text-brand-300"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-slate-900/10 dark:border-white/10">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-600 dark:text-slate-400">
+            <p><i class="fa-solid fa-copyright mr-2"></i>© <span id="year"></span> Rajsekhar Acharya</p>
+            <a href="#top"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-brand-600 text-white hover:bg-brand-500 shadow-md"><i
+                    class="fa-solid fa-arrow-up"></i><span class="sr-only">Back to top</span></a>
+            <div class="flex items-center gap-4">
+                <a class="hover:text-slate-900 dark:hover:text-white" href="https://x.com/imrajsekhar" target="_blank"
+                    aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a class="hover:text-slate-900 dark:hover:text-white" href="https://facebook.com/rajsekhar.acharya"
+                    target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a class="hover:text-slate-900 dark:hover:text-white"
+                    href="https://www.instagram.com/rajsekhar_acharya/" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Persisted theme
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') root.classList.remove('dark');
+        if (saved === 'dark') root.classList.add('dark');
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const isDark = root.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth anchor scroll handled by CSS scroll-smooth; keep manual fallback
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href').slice(1); const el = document.getElementById(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }));
+
+        // Reveal on scroll (stagger inferred by DOM order)
+        const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate-fade-in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+        document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+        // Project search
+        const input = document.getElementById('search');
+        const grid = document.getElementById('projectGrid');
+        const items = grid ? Array.from(grid.children) : [];
+        input?.addEventListener('input', () => { const q = input.value.trim().toLowerCase(); items.forEach(card => { const t = (card.getAttribute('data-title') || '').toLowerCase(); const match = t.includes(q); card.style.pointerEvents = match ? '' : 'none'; card.style.opacity = match ? '1' : '0'; card.style.transform = match ? '' : 'scale(.98)'; setTimeout(() => { card.style.display = match ? '' : 'none'; }, match ? 0 : 180); }); });
+
+        // Mobile drawer
+        const menuBtn = document.getElementById('menuBtn');
+        const menuClose = document.getElementById('menuClose');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const openNav = () => { mobileNav.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+        const closeNav = () => { mobileNav.classList.add('-translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = ''; };
+        menuBtn?.addEventListener('click', openNav);
+        menuClose?.addEventListener('click', closeNav);
+        overlay?.addEventListener('click', closeNav);
+
+        // Button ripple micro‑interaction
+        document.querySelectorAll('.ripple').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const circle = document.createElement('span');
+                const d = Math.max(this.clientWidth, this.clientHeight); const r = this.getBoundingClientRect();
+                Object.assign(circle.style, { width: `${d}px`, height: `${d}px`, left: `${e.clientX - r.left - d / 2}px`, top: `${e.clientY - r.top - d / 2}px`, position: 'absolute', borderRadius: '50%', transform: 'scale(0)', opacity: '0.35', background: 'currentColor', pointerEvents: 'none', transition: 'transform 450ms ease, opacity 650ms ease' });
+                this.style.position = 'relative'; this.appendChild(circle);
+                requestAnimationFrame(() => { circle.style.transform = 'scale(2.5)'; circle.style.opacity = '0'; });
+                setTimeout(() => circle.remove(), 700);
+            });
+        });
+
+        // Scroll progress bar
+        const bar = document.getElementById('scrollbar');
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement; const sc = h.scrollTop; const m = h.scrollHeight - h.clientHeight; const p = (sc / m) * 100; bar.style.width = `${p}%`;
+        });
+
+        // PWA: register service worker (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(console.error);
+            });
+        }
+    </script>
+
+    <!-- SEO JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rajsekhar Acharya",
+      "jobTitle": "Full-Stack Developer",
+      "url": "https://rajsekharacharya.github.io/",
+      "sameAs": [
+        "https://github.com/rajsekharacharya",
+        "https://x.com/imrajsekhar",
+        "https://www.linkedin.com/in/rajsekhar-acharya"
+      ],
+      "knowsAbout": ["Spring Boot", "Angular", "SaaS", "Microservices", "REST APIs", "MySQL", "PostgreSQL", "Kafka"]
+    }
+  </script>
 </body>
 
 </html>
