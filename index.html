@@ -240,7 +240,7 @@
                 <div class="md:justify-self-end" data-animate>
                     <div class="relative">
                         <img class="w-64 h-64 rounded-2xl object-cover ring-1 ring-slate-900/10 dark:ring-white/10 card"
-                            src="images/profile-pic.png" alt="Portrait of Rajsekhar Acharya" width="256" height="256"
+                            src="images/profile.webp" alt="Portrait of Rajsekhar Acharya" width="256" height="256"
                             loading="eager" />
                         <div
                             class="absolute -bottom-4 -right-4 bg-white/80 dark:bg-slate-900/70 glass px-3 py-2 rounded-xl border border-slate-900/10 dark:border-white/10 text-sm text-slate-800 dark:text-slate-200">
@@ -262,8 +262,7 @@
             <p class="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">
                 I’m a Full-Stack Developer focused on building scalable web apps and microservices with
                 <strong>Spring Boot</strong> and <strong>Angular</strong>. I design and optimize RESTful APIs, implement
-                <strong>multi-tenancy</strong> for SaaS (subdomains, per-tenant DB, migrations), and maintain robust
-                data layers
+                maintain robust data layers
                 on <strong>PostgreSQL</strong> and <strong>MySQL</strong>. I’ve integrated <strong>JWT</strong> and
                 <strong>OAuth2</strong>
                 with role-based access (RBAC), containerized services with <strong>Docker</strong>, and streamlined
@@ -490,7 +489,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex items-end justify-between gap-4">
                 <h2 class="text-2xl font-bold"><i
-                        class="fa-solid fa-rocket mr-2 text-brand-600 dark:text-brand-400"></i>Featured Projects</h2>
+                        class="fa-solid fa-rocket mr-2 text-brand-600 dark:text-brand-400"></i>Featured Personal Projects</h2>
                 <a class="text-sm text-brand-700 dark:text-brand-300 underline" href="#all-projects"><i
                         class="fa-solid fa-list mr-1"></i>See all</a>
             </div>
@@ -627,10 +626,12 @@
                         <span class="text-sm text-slate-600 dark:text-slate-400">Jan 2022 – Present</span>
                     </div>
                     <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 space-y-1">
-                        <li><i class="fa-solid fa-cogs mr-2"></i>Architected and delivered Spring Boot microservices and
-                            Angular front‑ends for ERP/asset/SaaS products.</li>
+                        <li><i class="fa-solid fa-cogs mr-2"></i>Engineered and deployed monolithic and scalable
+                            microservices using Spring Boot and Docker for enterprise-grade applications.Led the
+                            migration of a legacy ERP monolith to modular Spring Boot microservices, enhancing system
+                            scalability and maintainability.</li>
                         <li><i class="fa-solid fa-shield-halved mr-2"></i>Implemented JWT/RBAC auth, Flyway migrations,
-                            CI/CD, and observability; improved performance & DX.</li>
+                            CI/CD; improved performance.</li>
                         <li><i class="fa-solid fa-code-branch mr-2"></i>Led back‑end API development, database design,
                             and performance tuning for core services.</li>
                         <li><i class="fa-solid fa-chalkboard-user mr-2"></i>Mentored junior engineers; established code
@@ -670,31 +671,6 @@
                     <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
                 </a>
 
-                <a href="https://github.com/rajsekharacharya/Multi-tenant-saas" target="_blank"
-                    data-title="Multi Tenant SaaS Platform"
-                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-semibold"><i class="fa-solid fa-cloud mr-2"></i>Multi‑Tenant SaaS Platform</h3>
-                        <i
-                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Subdomain Routing • JWT/RBAC • Flyway</p>
-                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
-                </a>
-
-                <a href="https://github.com/rajsekharacharya/Financial-accounting" target="_blank"
-                    data-title="Account Management Software Accounting"
-                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-semibold"><i class="fa-solid fa-chart-line mr-2"></i>Account Management Software
-                        </h3>
-                        <i
-                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
-                    </div>
-                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Balance Sheets • OTP • Auditing</p>
-                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
-                </a>
-
                 <a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank"
                     data-title="Resource Forge Asset Management"
                     class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
@@ -706,6 +682,57 @@
                     <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Assets • AMC/Insurance • Reports</p>
                     <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
                 </a>
+
+                <div data-title="Volly – Sports Video Review System"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>Volly – Sports Video Review
+                            System</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Developed a Raspberry Pi-based system
+                        that records the last 50 seconds of video on button press, using Python for capture and Java for
+                        backend processing.</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+                <div data-title="V-Integrate"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>V-Integrate</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">The ERP is an end-to-end Sales to Service
+                        software solution focussing on the usability of large volumes of data, across different modules.
+                    </p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+                <div data-title="Sumosave Retail Management"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>SUMOSAVE</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Retail Management • Vendor
+                        Onboarding/PO/Stock/Stock Transfer • Reports</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+
+                <div data-title="Smart Raw Material Procurement System (SRMPS)"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>Smart Raw Material Procurement
+                            System (SRMPS)</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Management • 4 Step Procurement• Reports
+                    </p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+
             </div>
         </div>
     </section>
