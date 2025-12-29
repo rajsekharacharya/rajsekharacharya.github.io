@@ -1,6 +1,6 @@
 // Tiny offline-first cache
-const CACHE = "rajsekhar-v1";
-const ASSETS = ["/", "/index.html"];
+const CACHE = "rajsekhar-v2";
+const ASSETS = ["./", "index.html", "images/profile.webp"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
