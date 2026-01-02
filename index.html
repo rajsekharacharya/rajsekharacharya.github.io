@@ -1,701 +1,736 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth"> <!-- default to dark; toggleable -->
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rajsekhar Acharya | Backend Architect</title>
+    <title>Rajsekhar Acharya – Full‑Stack Developer (Spring Boot & Angular)</title>
     <meta name="description"
-        content="Senior Backend Engineer specializing in Microservices, Spring Boot, and Scalable Systems." />
+        content="Portfolio of Rajsekhar Acharya – Full‑Stack Developer specializing in Spring Boot, Angular, SaaS platforms, and cloud‑native services." />
+    <link rel="canonical" href="https://rajsekharacharya.github.io/" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind -->
+    <!-- Tailwind (CDN) & theme config -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        mono: ["JetBrains Mono", "monospace"],
-                        sans: ["Plus Jakarta Sans", "sans-serif"],
-                    },
-                    colors: {
-                        sys: {
-                            bg: 'var(--bg-color)',
-                            panel: 'var(--panel-color)',
-                            text: 'var(--text-color)',
-                            primary: 'var(--primary-color)',
-                            secondary: 'var(--secondary-color)',
-                            accent: 'var(--accent-color)',
-                            border: 'var(--border-color)',
-                        }
-                    },
-                    animation: {
-                        'blink': 'blink 1s step-end infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 3s ease-in-out infinite alternate',
-                    },
+                    fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+                    colors: { brand: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63' } },
                     keyframes: {
-                        blink: { '50%': { opacity: '0' } },
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-                        glow: { 'from': { boxShadow: '0 0 5px var(--primary-color)' }, 'to': { boxShadow: '0 0 20px var(--primary-color), 0 0 10px var(--secondary-color)' } }
+                        floaty: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-6px)' } },
+                        fadein: { '0%': { opacity: 0, transform: 'translateY(12px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } }
                     },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
-                    }
+                    animation: { floaty: 'floaty 5s ease-in-out infinite', 'fade-in': 'fadein .7s ease-out both', shimmer: 'shimmer 2.5s linear infinite' }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- Icons -->
+    <meta name="theme-color" content="#06b6d4" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Social meta -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rajsekhar Acharya – Full-Stack Developer" />
+    <meta property="og:description" content="Spring Boot • Angular • SaaS • Microservices" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rajsekharacharya.github.io/" />
+    <meta property="og:image" content="https://rajsekharacharya.github.io/images/og-banner.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rajsekhar Acharya – Full-Stack Developer" />
+    <meta name="twitter:description" content="Spring Boot • Angular • SaaS • Microservices" />
+    <meta name="twitter:image" content="https://rajsekharacharya.github.io/images/og-banner.png" />
+    <meta name="twitter:image:alt" content="Rajsekhar Acharya — Full-Stack Developer | Spring Boot & Angular" />
+
+
+    <!-- Optional analytics (Plausible) -->
+    <script defer data-domain="rajsekharacharya.github.io" src="https://plausible.io/js/script.js"></script>
 
     <style>
-        /* --- THEME ENGINE --- */
-        :root {
-            /* Default: Matrix / Cyber (Brighter Text) */
-            --bg-color: #050505;
-            --panel-color: rgba(20, 20, 20, 0.85);
-            /* Slightly more opaque */
-            --text-color: #f0f0f0;
-            --primary-color: #00ff41;
-            --secondary-color: #00f0ff;
-            --accent-color: #bd00ff;
-            --border-color: #333333;
-            --font-main: 'JetBrains Mono', monospace;
-            --matrix-color: #00ff41;
-            --matrix-opacity: 0.04;
+        .skill-chip {
+            @apply px-3 py-1.5 rounded-full text-sm border border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition;
         }
 
-        /* Dracula Theme */
-        body.theme-dracula {
-            --bg-color: #282a36;
-            --panel-color: rgba(68, 71, 90, 0.9);
-            --text-color: #f8f8f2;
-            --primary-color: #ff79c6;
-            --secondary-color: #bd93f9;
-            --accent-color: #50fa7b;
-            --border-color: #6272a4;
-            --matrix-color: #ff79c6;
+        .skill-chip[aria-pressed="true"] {
+            @apply bg-brand-600 text-white border-transparent;
         }
 
-        /* PowerShell Theme */
-        body.theme-powershell {
-            --bg-color: #012456;
-            --panel-color: rgba(1, 36, 86, 0.95);
-            --text-color: #ffffff;
-            --primary-color: #F9F1A5;
-            --secondary-color: #00ffff;
-            --accent-color: #ffffff;
-            --border-color: #ffffff;
-            --matrix-color: #F9F1A5;
+        .skill-badge {
+            height: 36px;
+            /* a hair taller than before */
+            border-radius: 10px;
+            box-shadow: 0 10px 22px -14px rgba(6, 182, 212, .5);
+            filter: grayscale(.15) saturate(1.1);
+            opacity: .95;
+            transition: transform .25s ease, box-shadow .25s ease, filter .25s ease, opacity .25s ease;
         }
 
-        /* Ubuntu Theme */
-        body.theme-ubuntu {
-            --bg-color: #2c001e;
-            --panel-color: rgba(94, 39, 80, 0.9);
-            --text-color: #ffffff;
-            --primary-color: #E95420;
-            --secondary-color: #77216F;
-            --accent-color: #AEA79F;
-            --border-color: #AEA79F;
-            --matrix-color: #E95420;
+        .skill-badge:hover {
+            transform: translateY(-3px) scale(1.03);
+            filter: none;
+            opacity: 1;
+            box-shadow: 0 16px 34px -14px rgba(6, 182, 212, .65);
         }
 
-        /* GUI / Recruiter Mode (Clean, Professional) */
-        body.mode-gui {
-            --font-main: 'Plus Jakarta Sans', sans-serif;
-            --bg-color: #f8fafc;
-            /* Light Slate BG */
-            --panel-color: #ffffff;
-            --text-color: #1e293b;
-            --primary-color: #0f172a;
-            /* Slate 900 */
-            --secondary-color: #3b82f6;
-            /* Blue 500 */
-            --accent-color: #64748b;
-            --border-color: #e2e8f0;
+        .card {
+            box-shadow: 0 10px 25px -12px rgba(2, 132, 199, .35);
+            transition: transform .3s ease, box-shadow .3s ease;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-main);
-            transition: background-color 0.5s, color 0.5s;
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -12px rgba(2, 132, 199, .45);
         }
 
-        /* Helper Classes */
-        .glass-panel {
-            background-color: var(--panel-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
+        .badge-row img {
+            margin: 4px;
+            height: 26px;
         }
 
-        .sys-text-primary {
-            color: var(--primary-color);
+        .prose a {
+            text-decoration: underline;
         }
 
-        .sys-text-secondary {
-            color: var(--secondary-color);
+        .glass {
+            backdrop-filter: blur(8px);
         }
 
-        .sys-border {
-            border-color: var(--border-color);
+        .shine {
+            background: linear-gradient(110deg, rgba(255, 255, 255, .06) 8%, rgba(255, 255, 255, .14) 18%, rgba(255, 255, 255, .06) 33%);
+            background-size: 200% 100%;
         }
 
-        /* GUI Mode Specifics */
-        .mode-gui .terminal-only {
-            display: none !important;
-        }
-
-        .mode-gui .gui-only {
-            display: block !important;
-        }
-
-        .gui-only {
-            display: none;
-        }
-
-        /* Hide matrix when low perf or GUI */
-        .mode-gui #matrix-canvas,
-        .low-perf #matrix-canvas {
-            display: none;
-        }
-
-        /* CLI Input Styling */
-        #cli-input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: var(--primary-color);
-            width: 100%;
-            font-family: 'JetBrains Mono', monospace;
-            caret-color: var(--primary-color);
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--border-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: var(--primary-color);
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important
+            }
         }
     </style>
 </head>
 
-<body class="antialiased selection:bg-sys-primary selection:text-black min-h-screen flex flex-col">
+<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 selection:bg-brand-400/25">
+    <!-- Scroll progress bar -->
+    <div id="scrollbar" class="fixed top-0 left-0 h-1 bg-brand-500 z-[60]" style="width:0"></div>
+    <!-- Mobile overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden"></div>
 
-    <!-- Backgrounds -->
-    <canvas id="matrix-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
-    <div
-        class="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,var(--secondary-color),transparent)] opacity-5">
-    </div>
-
-    <!-- Settings Toggle -->
-    <button id="open-settings"
-        class="fixed bottom-6 right-6 z-50 w-12 h-12 glass-panel rounded-full flex items-center justify-center text-sys-primary hover:scale-110 transition shadow-glass hover:shadow-[0_0_20px_var(--primary-color)]"
-        title="System Config">
-        <i class="fa-solid fa-gear fa-spin" style="animation-duration: 8s;"></i>
-    </button>
-
-    <!-- Settings Modal -->
-    <div id="settings-modal"
-        class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity">
-        <div class="glass-panel p-8 rounded-lg max-w-sm w-full shadow-2xl relative animate-[float_4s_infinite]">
-            <button id="close-settings" class="absolute top-4 right-4 text-gray-500 hover:text-white transition"><i
-                    class="fa-solid fa-xmark text-xl"></i></button>
-            <h2 class="text-xl font-bold mb-6 sys-text-primary border-b border-gray-700 pb-2">Configuration</h2>
-
-            <!-- View Mode -->
-            <div class="mb-6">
-                <label class="block text-xs uppercase text-gray-400 mb-2 font-bold tracking-wider">Interface
-                    Mode</label>
-                <div class="flex gap-2">
-                    <button onclick="setMode('terminal')"
-                        class="flex-1 py-2 text-sm border sys-border hover:bg-white/10 transition mode-btn active rounded"
-                        data-mode="terminal">
-                        <i class="fa-solid fa-terminal mr-2"></i>Terminal
-                    </button>
-                    <button onclick="setMode('gui')"
-                        class="flex-1 py-2 text-sm border sys-border hover:bg-white/10 transition mode-btn rounded"
-                        data-mode="gui">
-                        <i class="fa-solid fa-user-tie mr-2"></i>Recruiter
-                    </button>
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-14">
+                <a href="#top" class="font-semibold tracking-tight text-brand-700 dark:text-brand-300"><i
+                        class="fa-solid fa-home mr-2"></i>RAJSEKHAR ACHARYA</a>
+                <nav class="hidden md:flex items-center gap-6 text-sm text-slate-600 dark:text-slate-300">
+                    <a href="#about" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-user mr-1"></i>About</a>
+                    <a href="#skills" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-code mr-1"></i>Skills</a>
+                    <a href="#projects" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-rocket mr-1"></i>Projects</a>
+                    <a href="#experience" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-briefcase mr-1"></i>Experience</a>
+                    <a href="#all-projects" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-list mr-1"></i>See all</a>
+                    <a href="#contact" class="hover:text-slate-900 dark:hover:text-white"><i
+                            class="fa-solid fa-envelope mr-1"></i>Contact</a>
+                </nav>
+                <div class="flex items-center gap-2">
+                    <a href="https://rajsekharacharya.github.io/RajsekharAcharyaResume.pdf" target="_blank"
+                        class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium transition"><i
+                            class="fa-solid fa-file-lines"></i> Resume</a>
+                    <button id="themeToggle"
+                        class="p-2 rounded-lg border border-slate-900/10 dark:border-white/10 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                        title="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
+                    <button id="menuBtn"
+                        class="md:hidden p-2 rounded-lg border border-slate-900/10 dark:border-white/10 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                        aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
                 </div>
-            </div>
-
-            <!-- Themes -->
-            <div class="mb-6 terminal-only">
-                <label class="block text-xs uppercase text-gray-400 mb-2 font-bold tracking-wider">Color Theme</label>
-                <div class="flex gap-4 justify-between">
-                    <button onclick="setTheme('default')"
-                        class="w-10 h-10 rounded-full border-2 border-transparent hover:border-white bg-[#00ff41] transition"
-                        title="Matrix"></button>
-                    <button onclick="setTheme('theme-dracula')"
-                        class="w-10 h-10 rounded-full border-2 border-transparent hover:border-white bg-[#bd93f9] transition"
-                        title="Dracula"></button>
-                    <button onclick="setTheme('theme-powershell')"
-                        class="w-10 h-10 rounded-full border-2 border-transparent hover:border-white bg-[#012456] transition"
-                        title="PowerShell"></button>
-                    <button onclick="setTheme('theme-ubuntu')"
-                        class="w-10 h-10 rounded-full border-2 border-transparent hover:border-white bg-[#E95420] transition"
-                        title="Ubuntu"></button>
-                </div>
-            </div>
-
-            <!-- Performance -->
-            <div>
-                <label class="block text-xs uppercase text-gray-400 mb-2 font-bold tracking-wider">System</label>
-                <label class="flex items-center cursor-pointer gap-3 p-2 hover:bg-white/5 rounded transition">
-                    <input type="checkbox" id="perf-toggle"
-                        class="form-checkbox bg-transparent border-gray-500 text-sys-primary rounded focus:ring-0">
-                    <span class="text-sm text-gray-300">Low Power Mode (Disable FX)</span>
-                </label>
             </div>
         </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav
-        class="fixed top-0 w-full z-40 glass-panel h-16 flex items-center justify-between px-6 transition-all shadow-lg">
-        <a href="#" class="font-bold text-lg sys-text-primary flex items-center gap-2 group">
-            <span class="terminal-only font-mono">~/rajsekhar</span>
-            <span class="gui-only text-xl tracking-tight text-gray-900 font-extrabold">RA.</span>
-            <span class="terminal-only w-2 h-4 bg-sys-primary animate-blink"></span>
-        </a>
-
-        <div
-            class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest uppercase text-gray-400 font-mono">
-            <a href="#about" class="hover:text-sys-secondary transition relative group">
-                <span class="terminal-only">./About</span>
-                <span class="gui-only">About</span>
-                <span
-                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-sys-secondary group-hover:w-full transition-all"></span>
-            </a>
-            <a href="#modules" class="hover:text-sys-secondary transition relative group">
-                <span class="terminal-only">./Modules</span>
-                <span class="gui-only">Projects</span>
-                <span
-                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-sys-secondary group-hover:w-full transition-all"></span>
-            </a>
-            <a href="#logs" class="hover:text-sys-secondary transition relative group">
-                <span class="terminal-only">./Experience</span>
-                <span class="gui-only">Experience</span>
-                <span
-                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-sys-secondary group-hover:w-full transition-all"></span>
-            </a>
-            <a href="#contact"
-                class="px-5 py-2 border sys-border rounded text-sys-primary hover:bg-sys-primary hover:text-black transition-all hover:shadow-[0_0_15px_var(--primary-color)]">
-                <span class="terminal-only">./Connect</span>
-                <span class="gui-only">Contact Me</span>
-            </a>
+        <!-- Mobile drawer -->
+        <!-- Overlay (click to close) -->
+        <div id="mobileOverlay"
+            class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity md:hidden z-40">
         </div>
 
-        <!-- Mobile Menu Toggle -->
-        <button id="menuBtn" class="md:hidden text-sys-primary text-xl"><i class="fa-solid fa-bars"></i></button>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 relative z-10 px-4">
-        <div class="max-w-5xl w-full">
-
-            <!-- TERMINAL MODE HERO -->
-            <div class="terminal-only animate-[float_6s_ease-in-out_infinite]">
-                <div class="glass-panel rounded-lg shadow-2xl overflow-hidden border border-gray-700/50">
-                    <!-- Title Bar -->
-                    <div
-                        class="bg-black/40 px-4 py-2 flex items-center justify-between border-b sys-border backdrop-blur-md">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-terminal text-gray-500 text-xs"></i>
-                            <span class="text-xs text-gray-500 font-mono">bash -- user@rajsekhar</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 transition"></div>
-                        </div>
-                    </div>
-
-                    <div id="terminal-output" class="p-6 h-[450px] overflow-y-auto font-mono text-sm leading-loose"
-                        onclick="document.getElementById('cli-input').focus()">
-                        <div class="mb-4">
-                            <span class="sys-text-primary">user@rajsekhar</span>:<span class="text-blue-400">~</span>$
-                            ./init_profile.sh --verbose<br>
-                            <span class="text-gray-400">[INFO] Loading assets... OK</span><br>
-                            <span class="text-gray-400">[INFO] Initializing Spring Context... OK</span><br>
-                            <span class="text-gray-400">[INFO] Establishing uplink... CONNECTED</span><br><br>
-
-                            <span class="text-white text-xl md:text-2xl font-bold">Hello World, I'm Rajsekhar
-                                Acharya.</span><br>
-                            <span class="sys-text-secondary">> Senior Backend Architect</span><br>
-                            <span class="sys-text-secondary">> Microservices & Scalability Specialist</span><br><br>
-
-                            <span class="text-gray-300">I construct the hidden logic that powers enterprise
-                                scale.</span>
-                        </div>
-                        <div class="mb-4 text-gray-500 italic border-t border-gray-800 pt-2 mt-4">
-                            <i class="fa-solid fa-info-circle mr-2"></i>Try typing: <span
-                                class="text-white">help</span>, <span class="text-white">gui</span>, <span
-                                class="text-white">projects</span>, or <span class="text-white">contact</span>
-                        </div>
-                    </div>
-
-                    <div class="px-6 pb-6 pt-2 flex items-center gap-2 border-t border-gray-800 bg-black/20">
-                        <span class="sys-text-primary">user@rajsekhar</span>:<span class="text-blue-400">~</span>$
-                        <input type="text" id="cli-input" autocomplete="off" spellcheck="false" autofocus>
-                    </div>
-                </div>
+        <!-- Drawer -->
+        <div id="mobileNav"
+            class="md:hidden fixed top-0 left-0 h-full w-72 bg-white dark:bg-slate-900 border-r border-slate-900/10 dark:border-white/10 z-50 -translate-x-full transition-transform">
+            <div class="flex items-center justify-between px-4 h-14 border-b border-slate-900/10 dark:border-white/10">
+                <span class="font-semibold text-brand-700 dark:text-brand-300">Menu</span>
+                <button id="menuClose" class="p-2" aria-label="Close menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
 
-            <!-- GUI MODE HERO (Expanded Content) -->
-            <div class="gui-only text-center animate-fade-in-up py-10">
-                <div
-                    class="w-40 h-40 mx-auto rounded-full bg-gray-200 mb-8 overflow-hidden border-[6px] border-white shadow-xl relative group cursor-pointer transition hover:scale-105">
-                    <img src="images/profile.webp" alt="Rajsekhar Acharya" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition"></div>
-                </div>
-
-                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-900 tracking-tight">Rajsekhar Acharya</h1>
-                <p class="text-xl md:text-2xl text-blue-600 font-medium mb-6">Senior Backend Architect</p>
-
-                <div class="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed mb-10 space-y-4 text-left">
-                    <p>
-                        I am a <strong>Senior Software Developer</strong> with over 3.5 years of expertise in
-                        architecting high-performance distributed systems.
-                        My core focus is on <strong>Spring Boot Microservices</strong>, cloud-native deployments, and
-                        strict Domain-Driven Design (DDD).
-                    </p>
-                    <p>
-                        Throughout my career, I have successfully migrated legacy monoliths to scalable microservices,
-                        reducing operational costs and improving system resiliency.
-                        I prioritize <strong>Clean Code</strong> principles and Test-Driven Development (TDD) to ensure
-                        maintainable, bug-free production environments.
-                    </p>
-                    <p>
-                        Currently, I am looking to leverage my skills in <strong>Java 17, Docker, and AWS</strong> to
-                        build the next generation of enterprise fintech solutions.
-                    </p>
-                </div>
-
-                <div class="flex justify-center gap-4">
-                    <a href="#modules"
-                        class="px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-gray-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        View Portfolio
-                    </a>
-                    <a href="RajsekharAcharyaResume.pdf" target="_blank"
-                        class="px-8 py-4 bg-white text-gray-900 border border-gray-200 rounded-full font-bold hover:bg-gray-50 transition shadow-sm hover:shadow-md transform hover:-translate-y-1 flex items-center gap-2">
-                        <i class="fa-solid fa-download"></i> Download Resume
-                    </a>
-                </div>
-            </div>
-
+            <nav class="p-4 space-y-2 text-slate-700 dark:text-slate-300">
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#about">
+                    <i class="fa-solid fa-user mr-1"></i>About
+                </a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#skills">
+                    <i class="fa-solid fa-code mr-1"></i>Skills
+                </a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#projects">
+                    <i class="fa-solid fa-rocket mr-1"></i>Projects
+                </a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#experience">
+                    <i class="fa-solid fa-briefcase mr-1"></i>Experience
+                </a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#all-projects">
+                    <i class="fa-solid fa-layer-group mr-1"></i>See all
+                </a>
+                <a class="block px-3 py-2 rounded hover:bg-slate-900/5 dark:hover:bg-white/5" href="#contact">
+                    <i class="fa-solid fa-envelope mr-1"></i>Contact
+                </a>
+            </nav>
         </div>
-    </section>
 
-    <!-- Dependencies / About -->
-    <section id="about" class="py-24 relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 text-gray-500">
-                <span class="sys-text-primary terminal-only">01. ./System_Dependencies</span>
-                <span class="sys-text-primary gui-only text-gray-900">Technical Expertise</span>
-                <span class="h-px bg-gray-700 flex-grow opacity-50"></span>
-            </h2>
+    </header>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <!-- Detailed Skills -->
-                <div
-                    class="group p-6 glass-panel rounded-lg text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition">
+    <!-- Hero -->
+    <section id="top" class="relative overflow-hidden">
+        <div class="absolute -left-32 -top-24 w-72 h-72 rounded-full bg-brand-400/30 blur-3xl animate-floaty"></div>
+        <div class="absolute -right-24 top-40 w-80 h-80 rounded-full bg-brand-600/20 blur-3xl animate-floaty"
+            style="animation-delay:.8s"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div data-animate>
+                    <p class="text-brand-700 dark:text-brand-300 font-semibold"><i
+                            class="fa-solid fa-globe mr-2"></i>Hello, World 👋</p>
+                    <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">I'm <span
+                            class="text-brand-700 dark:text-brand-400">Rajsekhar Acharya</span></h1>
+                    <p class="mt-4 text-slate-700 dark:text-slate-300 text-lg">
+                        Backend brains, frontend polish: Spring Boot, Angular, and cloud-native delivery.
+                    </p>
+                    <div class="mt-6 flex flex-wrap items-center gap-3">
+                        <a href="#projects"
+                            class="ripple inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium transition"><i
+                                class="fa-solid fa-rocket"></i> View Projects</a>
+                        <a href="#contact"
+                            class="ripple inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-900/15 dark:border-white/15 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                                class="fa-solid fa-envelope"></i> Contact</a>
+                        <a href="https://github.com/rajsekharacharya" target="_blank"
+                            class="ripple inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-900/15 dark:border-white/15 hover:bg-slate-900/5 dark:hover:bg-white/5"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
                     </div>
-                    <i
-                        class="fa-brands fa-java text-4xl mb-4 text-gray-500 group-hover:text-[#f89820] transition-colors"></i>
-                    <h3 class="font-bold text-sm mb-1 sys-text-text">Java 17+</h3>
-                    <p class="text-xs text-gray-500">Records, Streams, Sealed Classes</p>
+                    <div class="mt-6 opacity-80 text-sm text-slate-700 dark:text-slate-300"><i
+                            class="fa-solid fa-map-marker-alt mr-2"></i>Kolkata, India • Open to opportunities</div>
                 </div>
-
-                <div
-                    class="group p-6 glass-panel rounded-lg text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition">
+                <div class="md:justify-self-end" data-animate>
+                    <div class="relative">
+                        <img class="w-64 h-64 rounded-2xl object-cover ring-1 ring-slate-900/10 dark:ring-white/10 card"
+                            src="images/profile.webp" alt="Portrait of Rajsekhar Acharya" width="256" height="256"
+                            loading="eager" />
+                        <div
+                            class="absolute -bottom-4 -right-4 bg-white/80 dark:bg-slate-900/70 glass px-3 py-2 rounded-xl border border-slate-900/10 dark:border-white/10 text-sm text-slate-800 dark:text-slate-200">
+                            <i class="fa-solid fa-code"></i> 3.5+ years • Java / Angular
+                        </div>
                     </div>
-                    <i
-                        class="fa-solid fa-leaf text-4xl mb-4 text-gray-500 group-hover:text-[#6db33f] transition-colors"></i>
-                    <h3 class="font-bold text-sm mb-1 sys-text-text">Spring Boot 3</h3>
-                    <p class="text-xs text-gray-500">Native, WebFlux, Security</p>
-                </div>
-
-                <div
-                    class="group p-6 glass-panel rounded-lg text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition">
-                    </div>
-                    <i
-                        class="fa-solid fa-database text-4xl mb-4 text-gray-500 group-hover:text-[#336791] transition-colors"></i>
-                    <h3 class="font-bold text-sm mb-1 sys-text-text">PostgreSQL</h3>
-                    <p class="text-xs text-gray-500">Indexing, Partitioning, SQL</p>
-                </div>
-
-                <div
-                    class="group p-6 glass-panel rounded-lg text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition">
-                    </div>
-                    <i
-                        class="fa-brands fa-docker text-4xl mb-4 text-gray-500 group-hover:text-[#2496ed] transition-colors"></i>
-                    <h3 class="font-bold text-sm mb-1 sys-text-text">Docker/K8s</h3>
-                    <p class="text-xs text-gray-500">Containerization & Orchestration</p>
-                </div>
-
-                <div
-                    class="group p-6 glass-panel rounded-lg text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition">
-                    </div>
-                    <i
-                        class="fa-brands fa-aws text-4xl mb-4 text-gray-500 group-hover:text-[#ff9900] transition-colors"></i>
-                    <h3 class="font-bold text-sm mb-1 sys-text-text">AWS Cloud</h3>
-                    <p class="text-xs text-gray-500">EC2, S3, RDS, Lambda</p>
-                </div>
-
-                <div
-                    class="group p-6 glass-panel rounded-lg text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition">
-                    </div>
-                    <i
-                        class="fa-solid fa-network-wired text-4xl mb-4 text-gray-500 group-hover:text-[#bd00ff] transition-colors"></i>
-                    <h3 class="font-bold text-sm mb-1 sys-text-text">Microservices</h3>
-                    <p class="text-xs text-gray-500">Event-Driven, CQRS, Saga</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
-    <section id="modules" class="py-24 relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 text-gray-500">
-                <span class="sys-text-primary terminal-only">02. ./Deployed_Modules</span>
-                <span class="sys-text-primary gui-only text-gray-900">Featured Projects</span>
-                <span class="h-px bg-gray-700 flex-grow opacity-50"></span>
+    <!-- About -->
+    <section id="about" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold">
+                <i class="fa-solid fa-user mr-2 text-brand-600 dark:text-brand-400"></i>About
             </h2>
 
-            <div class="space-y-24">
+            <p class="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">
+                I’m a Full-Stack Developer focused on building scalable web apps and microservices with
+                <strong>Spring Boot</strong> and <strong>Angular</strong>. I design and optimize RESTful APIs, implement
+                maintain robust data layers
+                on <strong>PostgreSQL</strong> and <strong>MySQL</strong>. I’ve integrated <strong>JWT</strong> and
+                <strong>OAuth2</strong>
+                with role-based access (RBAC), containerized services with <strong>Docker</strong>, and streamlined
+                delivery via
+                <strong>CI/CD</strong> pipelines. Day-to-day I collaborate cross-functionally, tune queries and indexes,
+                harden
+                security, and ship features that balance performance, DX, and maintainability.
+            </p>
 
-                <!-- Project 1 -->
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <!-- Text Side -->
-                    <div>
-                        <h3 class="text-2xl md:text-3xl font-bold sys-text-text mb-4">Cuisine Command</h3>
-                        <p class="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed text-lg">
-                            Enterprise-grade Restaurant Management System capable of handling <strong>500+ concurrent
-                                orders</strong> per minute.
-                            Features a custom inventory locking mechanism (Redisson) that prevents stock over-selling.
-                        </p>
+            <!-- Highlights -->
+            <ul class="mt-6 space-y-2 text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-diagram-project mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Microservices & APIs:</strong> Spring Boot services, clean REST contracts,
+                        OpenAPI/Swagger docs.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-cloud mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Multi-tenant SaaS:</strong> Subdomain routing, per-tenant databases, Flyway
+                        migrations, RBAC.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-shield-halved mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Security:</strong> Spring Security with JWT & OAuth2, token scopes/claims, secure
+                        configuration.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-database mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Data:</strong> PostgreSQL/MySQL schema design, query/index tuning, auditing &
+                        migrations.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-boxes-stacked mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Delivery:</strong> Dockerized apps, environment configs, CI/CD for tests & automated
+                        deployments.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="fa-solid fa-palette mt-1 text-brand-600 dark:text-brand-400"></i>
+                    <span><strong>Frontend:</strong> Angular (component-driven UIs, RxJS, forms), clean UX with
+                        performance in mind.</span>
+                </li>
+            </ul>
 
-                        <ul class="space-y-2 mb-6 text-sm text-gray-600 dark:text-gray-300">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Reduced
-                                order-to-kitchen latency by <strong>40%</strong>.</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>
-                                Implemented Automated Email Reporting Service.</li>
-                        </ul>
+            <!-- Current focus (optional) -->
+            <div class="mt-6 text-sm text-slate-600 dark:text-slate-400">
+                <i class="fa-solid fa-bullseye text-brand-600 dark:text-brand-400 mr-2"></i>
+                Currently building: <strong>Cuisine Command</strong> (restaurant POS), and maintaining
+                <strong>Multi-Tenant SaaS</strong>, <strong>Financial Accounting</strong>, and <strong>Resource
+                    Forge</strong>.
+            </div>
+        </div>
+    </section>
 
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span
-                                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Java
-                                17</span>
-                            <span
-                                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Spring
-                                Boot 3</span>
-                            <span
-                                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Angular</span>
-                        </div>
 
+    <!-- Skills -->
+    <section id="skills" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold">
+                        <i class="fa-solid fa-code mr-2 text-brand-600 dark:text-brand-400"></i>
+                        Skills
+                    </h2>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                        Hover to highlight • Tap chips to filter
+                    </p>
+                </div>
+
+                <!-- Filter chips -->
+                <!-- Filter chips -->
+                <div id="skillChips" class="flex flex-wrap gap-2" role="tablist" aria-label="Skill filters">
+                    <button data-skill-filter="all" aria-pressed="true" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border border-transparent
+           bg-brand-600 text-white shadow transition">
+                        <i class="fa-solid fa-layer-group"></i><span>All</span>
+                    </button>
+
+                    <button data-skill-filter="backend" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-server"></i><span>Backend</span>
+                    </button>
+
+                    <button data-skill-filter="frontend" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-code"></i><span>Frontend</span>
+                    </button>
+
+                    <button data-skill-filter="devops" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-gears"></i><span>DevOps</span>
+                    </button>
+
+                    <button data-skill-filter="db" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-database"></i><span>Databases</span>
+                    </button>
+
+                    <button data-skill-filter="other" aria-pressed="false" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm border
+           border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300
+           bg-white/70 dark:bg-slate-900/50 hover:bg-slate-900/5 dark:hover:bg-white/5 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i><span>Other</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Badges: horizontal scroll on mobile, wraps on larger screens -->
+            <div class="mt-6 badge-row flex gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible snap-x snap-mandatory"
+                data-animate id="skillsGrid">
+                <!-- Wrap each badge in a span so we can show/hide smoothly -->
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="Java"
+                        src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="Spring Boot"
+                        src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="Angular"
+                        src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="TypeScript"
+                        src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="JavaScript"
+                        src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="HTML5"
+                        src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="frontend" alt="CSS3"
+                        src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Docker"
+                        src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Jenkins"
+                        src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="other" alt="Apache Kafka"
+                        src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Git"
+                        src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="Linux"
+                        src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="MySQL"
+                        src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="PostgreSQL"
+                        src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="MongoDB"
+                        src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="db" alt="Oracle"
+                        src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="Node.js"
+                        src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="backend" alt="GraphQL"
+                        src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="devops" alt="AWS"
+                        src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="other" alt="Thymeleaf"
+                        src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white" />
+                </span>
+
+                <span class="snap-start shrink-0 sm:shrink">
+                    <img class="skill-badge" data-groups="other" alt="Python"
+                        src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-end justify-between gap-4">
+                <h2 class="text-2xl font-bold"><i
+                        class="fa-solid fa-rocket mr-2 text-brand-600 dark:text-brand-400"></i>Featured Personal Projects</h2>
+                <a class="text-sm text-brand-700 dark:text-brand-300 underline" href="#all-projects"><i
+                        class="fa-solid fa-list mr-1"></i>See all</a>
+            </div>
+
+            <div class="mt-8 grid md:grid-cols-2 gap-6">
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-utensils mr-2"></i>Cuisine Command 🍲
+                        </h3>
                         <a href="https://github.com/rajsekharacharya/cuisine-command" target="_blank"
-                            class="sys-text-primary font-bold hover:underline underline-offset-4 flex items-center gap-2 group">
-                            <span class="group-hover:translate-x-1 transition">View Code</span> <i
-                                class="fa-solid fa-arrow-right"></i>
-                        </a>
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Cuisine Command on GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
-
-                    <!-- Visual Side -->
-                    <div class="relative group">
-                        <!-- Terminal Mode Visual -->
-                        <div
-                            class="terminal-only glass-panel p-6 rounded relative overflow-hidden shadow-2xl transition duration-500 transform group-hover:scale-[1.02]">
-                            <div
-                                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sys-primary to-transparent opacity-50">
-                            </div>
-                            <span
-                                class="text-xs text-gray-500 block mb-4 border-b border-gray-700 pb-1 font-mono">BackendConfig.java</span>
-                            <pre class="font-mono text-sm overflow-x-auto text-gray-300 leading-normal">
-<span class="sys-text-accent">@Service</span>
-<span class="sys-text-primary">public class</span> OrderService {
-  
-  <span class="sys-text-accent">@Transactional</span>(isolation = SERIALIZABLE)
-  <span class="sys-text-primary">public void</span> processOrder(Order order) {
-     <span class="text-gray-500">// Distributed Lock for Consistency</span>
-     inventory.lock(order.getItems());
-     paymentGateway.charge(order);
-     metrics.recordLatency(<span class="sys-text-secondary">"order_placed"</span>);
-  }
-}
-</pre>
-                        </div>
-
-                        <!-- GUI Mode Visual -->
-                        <div
-                            class="gui-only bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100 transform group-hover:shadow-2xl transition duration-300">
-                            <div class="h-48 bg-gray-50 flex items-center justify-center border-b border-gray-100">
-                                <i
-                                    class="fa-solid fa-utensils text-5xl text-gray-300 group-hover:text-blue-500 transition duration-300 scale-110"></i>
-                            </div>
-                            <div class="p-6">
-                                <h4 class="font-bold text-gray-900 mb-2">POS Architecture</h4>
-                                <p class="text-sm text-gray-500">High-throughput, consistent backend.</p>
-                            </div>
-                        </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Restaurant management app: POS, billing,
+                        stock/inventory, auth, email, file uploads.
+                        <span class="block mt-2 text-slate-500 dark:text-slate-400 text-sm">Spring Boot backend •
+                            Angular frontend</span>
+                    </p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Java 17+"
+                            src="https://img.shields.io/badge/Java-17%2B-orange?style=flat-square&logo=java"
+                            loading="lazy" />
+                        <img alt="Spring Boot 3"
+                            src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&logo=springboot&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Angular 19+"
+                            src="https://img.shields.io/badge/Angular-19%2B-DD0031?style=flat-square&logo=angular&logoColor=white"
+                            loading="lazy" />
+                        <img alt="License Apache"
+                            src="https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square"
+                            loading="lazy" />
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 2 (SaaS) -->
-                <div class="grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
-                    <div>
-                        <h3 class="text-2xl md:text-3xl font-bold sys-text-text mb-4">Multi-Tenant SaaS</h3>
-                        <p class="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed text-lg">
-                            Scalable architecture skeleton implementing the <strong>Database-per-Tenant</strong>
-                            isolation pattern suitable for fintech and healthcare data strictness.
-                        </p>
-                        <ul class="space-y-2 mb-6 text-sm text-gray-600 dark:text-gray-300">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>
-                                Zero-touch tenant provisioning via Flyway.</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Dynamic
-                                datasource routing with <strong>&lt; 2ms overhead</strong>.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span
-                                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">MySQL</span>
-                            <span
-                                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Flyway</span>
-                            <span
-                                class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-bold text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">Docker</span>
-                        </div>
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-cloud mr-2"></i>Multi‑Tenant SaaS
+                            Platform 🚀</h3>
                         <a href="https://github.com/rajsekharacharya/Multi-tenant-saas" target="_blank"
-                            class="sys-text-secondary font-bold hover:underline underline-offset-4 flex items-center gap-2 group">
-                            <span class="group-hover:translate-x-1 transition">View Code</span> <i
-                                class="fa-solid fa-arrow-right"></i>
-                        </a>
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Multi‑Tenant SaaS Platform on GitHub"><i class="fa-brands fa-github"></i></a>
                     </div>
-
-                    <div class="relative group">
-                        <div
-                            class="terminal-only glass-panel p-6 rounded relative overflow-hidden shadow-2xl transition duration-500 transform group-hover:scale-[1.02]">
-                            <div
-                                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sys-secondary to-transparent opacity-50">
-                            </div>
-                            <span
-                                class="text-xs text-gray-500 block mb-4 border-b border-gray-700 pb-1 font-mono">application.yaml</span>
-                            <pre class="font-mono text-sm overflow-x-auto text-gray-300 leading-normal">
-<span class="sys-text-primary">multitenancy</span>:
-  <span class="sys-text-secondary">mode</span>: <span class="text-white">DATABASE_ISOLATION</span>
-  <span class="sys-text-secondary">resolver</span>: <span class="text-white">DNS_SUBDOMAIN</span>
-  <span class="sys-text-secondary">security</span>:
-     <span class="sys-text-accent">encryption</span>: <span class="sys-text-primary">AES-256</span>
-</pre>
-                        </div>
-
-                        <div
-                            class="gui-only bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100 transform group-hover:shadow-2xl transition duration-300">
-                            <div class="h-48 bg-gray-50 flex items-center justify-center border-b border-gray-100">
-                                <i
-                                    class="fa-solid fa-cloud text-5xl text-gray-300 group-hover:text-blue-500 transition duration-300 scale-110"></i>
-                            </div>
-                            <div class="p-6">
-                                <h4 class="font-bold text-gray-900 mb-2">Cloud Infrastructure</h4>
-                                <p class="text-sm text-gray-500">Secure Multi-Tenant SaaS.</p>
-                            </div>
-                        </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Subdomain routing, tenant isolation (per‑DB),
+                        JWT/RBAC, Flyway provisioning, Swagger.</p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Java 17" src="https://img.shields.io/badge/Java-17-blue?style=flat-square&logo=java"
+                            loading="lazy" />
+                        <img alt="Spring Boot 3.3"
+                            src="https://img.shields.io/badge/Spring%20Boot-3.3.3-6DB33F?style=flat-square&logo=springboot&logoColor=white"
+                            loading="lazy" />
+                        <img alt="MySQL"
+                            src="https://img.shields.io/badge/MySQL-8%2B-4479A1?style=flat-square&logo=mysql&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Swagger"
+                            src="https://img.shields.io/badge/OpenAPI-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black"
+                            loading="lazy" />
                     </div>
-                </div>
+                </article>
 
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-chart-line mr-2"></i>Account Management
+                            Software 📊</h3>
+                        <a href="https://github.com/rajsekharacharya/Financial-accounting" target="_blank"
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Account Management Software on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Transactions, ledgers, balance sheets, OTP,
+                        Indian currency number‑to‑words, auditing.</p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Spring Security"
+                            src="https://img.shields.io/badge/Spring%20Security-active-6DB33F?style=flat-square&logo=springsecurity&logoColor=white"
+                            loading="lazy" />
+                        <img alt="REST API"
+                            src="https://img.shields.io/badge/REST-API-000?style=flat-square&logo=fastapi&logoColor=white"
+                            loading="lazy" />
+                        <img alt="PostgreSQL"
+                            src="https://img.shields.io/badge/PostgreSQL-13%2B-4169E1?style=flat-square&logo=postgresql&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Maven"
+                            src="https://img.shields.io/badge/Maven-3.6%2B-C71A36?style=flat-square&logo=apachemaven&logoColor=white"
+                            loading="lazy" />
+                    </div>
+                </article>
+
+                <article
+                    class="h-full card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold"><i class="fa-solid fa-tools mr-2"></i>Resource Forge – Asset
+                            Management 🛠️</h3>
+                        <a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank"
+                            class="text-brand-700 dark:text-brand-300 hover:opacity-80"
+                            aria-label="Resource Forge on GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <p class="mt-2 text-slate-700 dark:text-slate-300">Full lifecycle assets, AMC/insurance,
+                        depreciation, dashboards; Thymeleaf + AngularJS UI, Python collector.</p>
+                    <div class="mt-3 badge-row">
+                        <img alt="Spring Boot"
+                            src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=flat-square&logo=springboot&logoColor=white"
+                            loading="lazy" />
+                        <img alt="AngularJS"
+                            src="https://img.shields.io/badge/AngularJS-1.x-B52E31?style=flat-square&logo=angularjs&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Thymeleaf"
+                            src="https://img.shields.io/badge/Thymeleaf-3.x-005F0F?style=flat-square&logo=thymeleaf&logoColor=white"
+                            loading="lazy" />
+                        <img alt="Python 3.12"
+                            src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white"
+                            loading="lazy" />
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Experience (Detailed) -->
-    <section id="logs" class="py-24 relative z-10 glass-panel border-t border-b border-gray-800">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 flex items-center gap-4 text-gray-500">
-                <span class="sys-text-primary terminal-only">03. ./Experience_Logs</span>
-                <span class="sys-text-primary gui-only text-gray-900">Experience</span>
-            </h2>
-
-            <div class="relative border-l-2 border-sys-secondary ml-3 md:ml-6 pl-8 py-4 space-y-12">
-
-                <div class="relative group">
-                    <span
-                        class="absolute -left-[41px] top-1 w-6 h-6 rounded-full bg-sys-bg border-4 border-sys-secondary shadow-[0_0_10px_var(--secondary-color)]"></span>
-
-                    <h3 class="text-2xl font-bold sys-text-text group-hover:text-sys-secondary transition">Senior
-                        Software Developer</h3>
-                    <div class="flex flex-col md:flex-row md:items-center gap-2 mb-4">
-                        <span class="font-bold text-lg sys-text-accent">VARELI TECNAC Pvt. Ltd.</span>
-                        <span class="hidden md:inline text-gray-600">|</span>
-                        <span class="text-sm font-mono text-gray-500 bg-gray-800/20 px-2 py-1 rounded">2022 -
-                            Present</span>
+    <!-- Experience -->
+    <section id="experience" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold"><i
+                    class="fa-solid fa-briefcase mr-2 text-brand-600 dark:text-brand-400"></i>Experience</h2>
+            <ol class="mt-6 space-y-6">
+                <li class="card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass"
+                    data-animate>
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="font-semibold"><i class="fa-solid fa-building mr-2"></i>VARELI TECNAC Pvt. Ltd. ·
+                            Senior Software Developer</p>
+                        <span class="text-sm text-slate-600 dark:text-slate-400">Jan 2022 – Present</span>
                     </div>
+                    <ul class="mt-3 list-disc pl-5 text-slate-700 dark:text-slate-300 space-y-1">
+                        <li><i class="fa-solid fa-cogs mr-2"></i>Engineered and deployed monolithic and scalable
+                            microservices using Spring Boot and Docker for enterprise-grade applications.Led the
+                            migration of a legacy ERP monolith to modular Spring Boot microservices, enhancing system
+                            scalability and maintainability.</li>
+                        <li><i class="fa-solid fa-shield-halved mr-2"></i>Implemented JWT/RBAC auth, Flyway migrations,
+                            CI/CD; improved performance.</li>
+                        <li><i class="fa-solid fa-code-branch mr-2"></i>Led back‑end API development, database design,
+                            and performance tuning for core services.</li>
+                        <li><i class="fa-solid fa-chalkboard-user mr-2"></i>Mentored junior engineers; established code
+                            quality gates and testing practices.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
 
-                    <!-- Terminal Description -->
-                    <div class="terminal-only text-sm font-mono text-gray-400 space-y-3">
-                        <p><span class="sys-text-primary"># Achievements:</span></p>
-                        <p class="pl-4 border-l border-gray-700">>> Migrated legacy monolith to Spring Boot
-                            Microservices.</p>
-                        <p class="pl-4 border-l border-gray-700">>> Reduced SQL latency by 40% via proper indexing.</p>
-                        <p><span class="sys-text-primary"># Stack:</span> Java 17, Spring Cloud, Docker, Jenkins</p>
-                    </div>
+    <!-- See All Projects (filterable) -->
+    <section id="all-projects" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold"><i
+                            class="fa-solid fa-list mr-2 text-brand-600 dark:text-brand-400"></i>All Projects</h2>
+                    <p class="text-slate-600 dark:text-slate-400"><i class="fa-solid fa-filter mr-2"></i>Filter and
+                        browse every public project.</p>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input id="search" type="search" placeholder="Search projects..."
+                        class="flex-1 w-full sm:w-64 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                </div>
+            </div>
 
-                    <!-- GUI Description (Structured) -->
-                    <div class="gui-only text-gray-600 dark:text-gray-300 leading-relaxed text-sm lg:text-base">
-                        <div class="mb-4">
-                            <strong class="block text-gray-900 dark:text-white mb-2">Key Responsibilities:</strong>
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Leading the backend development team in designing scalable microservices
-                                    architectures.</li>
-                                <li>Conducting code reviews and enforcing TDD / Clean Code practices.</li>
-                                <li>Managing CI/CD pipelines (Jenkins) for automated deployments to AWS.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong class="block text-gray-900 dark:text-white mb-2">Major Achievements:</strong>
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Successfully decoupled a heavy monolithic application into <strong>12+ independently
-                                        deployable microservices</strong>.</li>
-                                <li>Optimized critical SQL queries in PostgreSQL, reducing generated reports generation
-                                    time from <strong>5 minutes to 3 seconds</strong>.</li>
-                                <li>Implemented a centralized Identity Provider (Auth Server) using OAuth2/JWT.</li>
-                            </ul>
-                        </div>
+            <div id="projectGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="https://github.com/rajsekharacharya/cuisine-command" target="_blank"
+                    data-title="Cuisine Command POS Restaurant"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-utensils mr-2"></i>Cuisine Command</h3>
+                        <i
+                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
                     </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Restaurant POS • Billing • Inventory</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </a>
+
+                <a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank"
+                    data-title="Resource Forge Asset Management"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>Resource Forge</h3>
+                        <i
+                            class="fa-brands fa-github text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Assets • AMC/Insurance • Reports</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </a>
+
+                <div data-title="Volly – Sports Video Review System"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>Volly – Sports Video Review
+                            System</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Developed a Raspberry Pi-based system
+                        that records the last 50 seconds of video on button press, using Python for capture and Java for
+                        backend processing.</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+                <div data-title="V-Integrate"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>V-Integrate</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">The ERP is an end-to-end Sales to Service
+                        software solution focussing on the usability of large volumes of data, across different modules.
+                    </p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+                <div data-title="Sumosave Retail Management"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>SUMOSAVE</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Retail Management • Vendor
+                        Onboarding/PO/Stock/Stock Transfer • Reports</p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
+                </div>
+
+                <div data-title="Smart Raw Material Procurement System (SRMPS)"
+                    class="group h-full block card rounded-2xl border border-slate-900/10 dark:border-white/10 p-6 bg-white/80 dark:bg-slate-900/40 glass">
+
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-semibold"><i class="fa-solid fa-tools mr-2"></i>Smart Raw Material Procurement
+                            System (SRMPS)</h3>
+                        <i class=" text-slate-500 group-hover:text-brand-600 dark:group-hover:text-brand-300"></i>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Management • 4 Step Procurement• Reports
+                    </p>
+                    <div class="mt-3 h-2 rounded-full shine animate-shimmer"></div>
                 </div>
 
             </div>
@@ -703,212 +738,186 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-24 relative z-10 text-center">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-bold sys-text-text mb-6">
-                <span class="terminal-only">./Initialize_Uplink</span>
-                <span class="gui-only">Let's Work Together</span>
-            </h2>
-            <p class="text-xl text-gray-500 mb-10 leading-relaxed">
-                Whether you need to scale an existing system or build a platform from scratch, I'm ready to deploy.
-            </p>
+    <section id="contact" class="py-16 border-t border-slate-900/10 dark:border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold"><i
+                    class="fa-solid fa-envelope mr-2 text-brand-600 dark:text-brand-400"></i>Get in touch</h2>
+            <p class="mt-2 text-slate-700 dark:text-slate-300"><i class="fa-solid fa-comment mr-2"></i>Open to roles,
+                consulting, and collaborations. Email is best!</p>
 
-            <div class="flex flex-col md:flex-row justify-center gap-6 mt-8">
+            <!-- Optional no-backend contact form (Formspree) -->
+            <form class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4" method="POST"
+                action="https://formspree.io/f/mjkevpbw">
+                <input
+                    class="col-span-1 sm:col-span-1 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10"
+                    type="text" name="name" placeholder="Your name" required>
+                <input
+                    class="col-span-1 sm:col-span-1 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10"
+                    type="email" name="email" placeholder="Your email" required>
+                <button
+                    class="ripple col-span-1 sm:col-span-1 px-3 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white"
+                    type="submit">Send</button>
+                <textarea
+                    class="sm:col-span-3 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-900/10 dark:border-white/10"
+                    name="message" rows="4" placeholder="Message" required></textarea>
+            </form>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="https://wa.me/918335898602?text=Hi%20Rajsekhar%2C%20saw%20your%20portfolio%20and%20would%20love%20to%20connect."
+                    target="_blank" rel="noopener"
+                    class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-[#25D366]"></i> WhatsApp
+                </a>
+
                 <a href="mailto:rajsekhar.acharya@gmail.com"
-                    class="px-8 py-4 bg-sys-primary text-black font-bold uppercase hover:bg-white transition rounded shadow-[0_0_20px_var(--primary-color)] hover:shadow-[0_0_40px_var(--primary-color)] transform hover:-translate-y-1">
-                    <i class="fa-regular fa-envelope mr-2"></i> Send Email
+                    class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    aria-label="Email Rajsekhar">
+                    <i class="fa-solid fa-envelope text-brand-600 dark:text-brand-300"></i> Email
                 </a>
-                <a href="tel:+918335898602"
-                    class="px-8 py-4 border-2 sys-border text-sys-text font-bold uppercase hover:bg-sys-text hover:text-black transition rounded hover:shadow-lg transform hover:-translate-y-1">
-                    <i class="fa-solid fa-phone mr-2"></i> +91 83358 98602
-                </a>
-                <a href="https://linkedin.com/in/rajsekhar-acharya" target="_blank"
-                    class="px-8 py-4 border-2 sys-border text-sys-text font-bold uppercase hover:bg-sys-text hover:text-black transition rounded hover:shadow-lg transform hover:-translate-y-1">
-                    <i class="fa-brands fa-linkedin mr-2"></i> LinkedIn
+
+                <a href="https://linkedin.com/in/rajsekhar-acharya" target="_blank" rel="noopener"
+                    class="card rounded-xl border border-slate-900/10 dark:border-white/10 p-4 bg-white/80 dark:bg-slate-900/40 glass flex items-center gap-3 hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin text-brand-600 dark:text-brand-300"></i> LinkedIn
                 </a>
             </div>
+
         </div>
     </section>
 
-    <footer
-        class="py-8 text-center text-xs text-gray-500 font-mono relative z-10 bg-black/80 backdrop-blur border-t border-gray-900">
-        <p class="terminal-only">SYSTEM STATUS: <span class="text-green-500">ONLINE</span>. THEME: <span
-                id="current-theme-name" class="text-white">Matrix</span>. VER: 3.0.0</p>
-        <p class="gui-only font-sans">© 2025 Rajsekhar Acharya. Designed & Built with Precision.</p>
+    <footer class="py-10 border-t border-slate-900/10 dark:border-white/10">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-600 dark:text-slate-400">
+            <p><i class="fa-solid fa-copyright mr-2"></i>© <span id="year"></span> Rajsekhar Acharya</p>
+            <a href="#top"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-brand-600 text-white hover:bg-brand-500 shadow-md"><i
+                    class="fa-solid fa-arrow-up"></i><span class="sr-only">Back to top</span></a>
+            <div class="flex items-center gap-4">
+                <a class="hover:text-slate-900 dark:hover:text-white" href="https://x.com/imrajsekhar" target="_blank"
+                    aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a class="hover:text-slate-900 dark:hover:text-white" href="https://facebook.com/rajsekhar.acharya"
+                    target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a class="hover:text-slate-900 dark:hover:text-white"
+                    href="https://www.instagram.com/rajsekhar_acharya/" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- 1. SETTINGS & MODAL ---
-        const modal = document.getElementById('settings-modal');
-        const openBtn = document.getElementById('open-settings');
-        const closeBtn = document.getElementById('close-settings');
-
-        const toggleModal = (show) => {
-            if (show) {
-                modal.classList.remove('hidden');
-                setTimeout(() => modal.classList.remove('opacity-0'), 10);
-            } else {
-                modal.classList.add('opacity-0');
-                setTimeout(() => modal.classList.add('hidden'), 300);
-            }
-        };
-
-        openBtn.addEventListener('click', () => toggleModal(true));
-        closeBtn.addEventListener('click', () => toggleModal(false));
-        modal.addEventListener('click', (e) => { if (e.target === modal) toggleModal(false); });
-
-
-        // --- 2. THEME ENGINE ---
-        function setTheme(themeClass) {
-            document.body.className = document.body.className.replace(/theme-\w+/g, ''); // clear themes
-            if (themeClass !== 'default') {
-                document.body.classList.add(themeClass);
-            }
-            const names = { 'default': 'Matrix', 'theme-dracula': 'Dracula', 'theme-powershell': 'PowerShell', 'theme-ubuntu': 'Ubuntu' };
-            const label = document.getElementById('current-theme-name');
-            if (label) label.textContent = names[themeClass] || 'Custom';
-        }
-
-        // --- 3. VIEW MODE (Terminal vs GUI) ---
-        function setMode(mode) {
-            if (mode === 'gui') {
-                document.body.classList.add('mode-gui');
-            } else {
-                document.body.classList.remove('mode-gui');
-            }
-            document.querySelectorAll('.mode-btn').forEach(btn => {
-                const isActive = btn.dataset.mode === mode;
-                btn.classList.toggle('bg-white/10', isActive);
-                btn.classList.toggle('text-white', isActive);
-                btn.classList.toggle('border-white/50', isActive);
-            });
-        }
-
-        // --- 4. PERFORMANCE TOGGLE ---
-        document.getElementById('perf-toggle').addEventListener('change', (e) => {
-            document.body.classList.toggle('low-perf', e.target.checked);
+        // Persisted theme
+        const root = document.documentElement;
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') root.classList.remove('dark');
+        if (saved === 'dark') root.classList.add('dark');
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const isDark = root.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
 
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // --- 5. INTERACTIVE CLI ---
-        const cliInput = document.getElementById('cli-input');
-        const terminalOutput = document.getElementById('terminal-output');
+        // Smooth anchor scroll handled by CSS scroll-smooth; keep manual fallback
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href').slice(1); const el = document.getElementById(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }));
 
-        const commands = {
-            'help': 'Available: about, projects, contact, theme [name], gui, clear, whoami',
-            'whoami': 'Rajsekhar Acharya. Backend Architect. Spring Boot Specialist.',
-            'about': 'Navigating to System Info...',
-            'projects': 'Listing Deployed Modules...',
-            'contact': 'Opening mail client...',
-            'gui': 'Switching to Recruiter Interface...',
-            'clear': 'CLEAR_BUFFER',
-            'theme': 'Usage: theme [matrix|dracula|powershell|ubuntu]'
-        };
+        // Reveal on scroll (stagger inferred by DOM order)
+        const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animate-fade-in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+        document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
-        if (cliInput) {
-            cliInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    const input = cliInput.value.trim().toLowerCase();
-                    const args = input.split(' ');
-                    const cmd = args[0];
+        // Project search
+        const input = document.getElementById('search');
+        const grid = document.getElementById('projectGrid');
+        const items = grid ? Array.from(grid.children) : [];
+        input?.addEventListener('input', () => { const q = input.value.trim().toLowerCase(); items.forEach(card => { const t = (card.getAttribute('data-title') || '').toLowerCase(); const match = t.includes(q); card.style.pointerEvents = match ? '' : 'none'; card.style.opacity = match ? '1' : '0'; card.style.transform = match ? '' : 'scale(.98)'; setTimeout(() => { card.style.display = match ? '' : 'none'; }, match ? 0 : 180); }); });
 
-                    addToTerminal(`user@guest:~$ ${input}`, 'sys-text-secondary');
+        // Mobile drawer
+        const menuBtn = document.getElementById('menuBtn');
+        const menuClose = document.getElementById('menuClose');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const openNav = () => { mobileNav.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; };
+        const closeNav = () => { mobileNav.classList.add('-translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = ''; };
+        menuBtn?.addEventListener('click', openNav);
+        menuClose?.addEventListener('click', closeNav);
+        overlay?.addEventListener('click', closeNav);
 
-                    if (commands[cmd]) {
-                        if (cmd === 'clear') {
-                            terminalOutput.innerHTML = '';
-                        }
-                        else if (cmd === 'gui') {
-                            setMode('gui');
-                            addToTerminal('Interface switched to GUI.', 'sys-text-primary');
-                        }
-                        else if (cmd === 'theme') {
-                            const tName = args[1];
-                            if (['matrix', 'dracula', 'powershell', 'ubuntu'].includes(tName)) {
-                                const map = { 'matrix': 'default', 'dracula': 'theme-dracula', 'powershell': 'theme-powershell', 'ubuntu': 'theme-ubuntu' };
-                                setTheme(map[tName]);
-                                addToTerminal(`Theme set to ${tName}.`, 'sys-text-primary');
-                            } else {
-                                addToTerminal('Available themes: matrix, dracula, powershell, ubuntu', 'text-red-400');
-                            }
-                        }
-                        else if (cmd === 'about') location.href = '#about';
-                        else if (cmd === 'projects') location.href = '#modules';
-                        else if (cmd === 'contact') location.href = '#contact';
-                        else {
-                            addToTerminal(commands[cmd], 'text-gray-300');
-                        }
-                    } else if (input !== '') {
-                        addToTerminal(`Command not found: ${cmd}.`, 'text-red-500');
-                    }
-                    cliInput.value = '';
-                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                }
+        // Button ripple micro‑interaction
+        document.querySelectorAll('.ripple').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const circle = document.createElement('span');
+                const d = Math.max(this.clientWidth, this.clientHeight); const r = this.getBoundingClientRect();
+                Object.assign(circle.style, { width: `${d}px`, height: `${d}px`, left: `${e.clientX - r.left - d / 2}px`, top: `${e.clientY - r.top - d / 2}px`, position: 'absolute', borderRadius: '50%', transform: 'scale(0)', opacity: '0.35', background: 'currentColor', pointerEvents: 'none', transition: 'transform 450ms ease, opacity 650ms ease' });
+                this.style.position = 'relative'; this.appendChild(circle);
+                requestAnimationFrame(() => { circle.style.transform = 'scale(2.5)'; circle.style.opacity = '0'; });
+                setTimeout(() => circle.remove(), 700);
             });
-        }
-
-        function addToTerminal(text, className) {
-            const div = document.createElement('div');
-            div.className = `mb-1 ${className || 'text-gray-300'}`;
-            div.textContent = text;
-            terminalOutput.appendChild(div);
-        }
-
-        // --- 6. MATRIX RAIN CANVAS ---
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, columns, drops;
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            columns = Math.floor(width / 20);
-            drops = Array(columns).fill(0);
-        }
-
-        function getMatrixColor() {
-            return getComputedStyle(document.documentElement).getPropertyValue('--matrix-color').trim() || '#00ff41';
-        }
-
-        function draw() {
-            if (document.body.classList.contains('low-perf') || document.body.classList.contains('mode-gui')) return;
-
-            // Fade effect (Faster fade for cleaner look)
-            ctx.fillStyle = `rgba(0, 0, 0, 0.05)`;
-            ctx.fillRect(0, 0, width, height);
-
-            ctx.fillStyle = getMatrixColor();
-            ctx.globalAlpha = 0.4;
-            ctx.font = '14px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = String.fromCharCode(Math.random() * 128);
-                const x = i * 20;
-                const y = drops[i] * 20;
-                ctx.fillText(text, x, y);
-
-                if (y > height && Math.random() > 0.98) drops[i] = 0;
-                drops[i]++;
-            }
-            ctx.globalAlpha = 1.0;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-        setInterval(draw, 50);
-
-        // --- 7. SCROLL REVEAL ---
-        ScrollReveal().reveal('section', {
-            delay: 150,
-            distance: '30px',
-            origin: 'bottom',
-            opacity: 0,
-            duration: 800,
-            easing: 'cubic-bezier(0.5, 0, 0, 1)'
         });
 
+        // Scroll progress bar
+        const bar = document.getElementById('scrollbar');
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement; const sc = h.scrollTop; const m = h.scrollHeight - h.clientHeight; const p = (sc / m) * 100; bar.style.width = `${p}%`;
+        });
+
+        // PWA: register service worker (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(console.error);
+            });
+        }
     </script>
+
+    <!-- SEO JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rajsekhar Acharya",
+      "jobTitle": "Full-Stack Developer",
+      "url": "https://rajsekharacharya.github.io/",
+      "sameAs": [
+        "https://github.com/rajsekharacharya",
+        "https://x.com/imrajsekhar",
+        "https://www.linkedin.com/in/rajsekhar-acharya"
+      ],
+      "knowsAbout": ["Spring Boot", "Angular", "SaaS", "Microservices", "REST APIs", "MySQL", "PostgreSQL", "Kafka"]
+    }
+  </script>
+    <script>
+        // Filter logic + active styling for chips
+        const chips = document.querySelectorAll('#skillChips [data-skill-filter]');
+        const wrappers = document.querySelectorAll('#skillsGrid > span'); // each badge wrapper
+
+        const activeClasses = 'bg-brand-600 text-white border-transparent shadow'.split(' ');
+        const inactiveClasses = 'text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-slate-900/50 border-slate-900/10 dark:border-white/10'.split(' ');
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                // aria + classes
+                chips.forEach(c => {
+                    c.setAttribute('aria-pressed', 'false');
+                    c.classList.remove(...activeClasses);
+                    c.classList.add(...inactiveClasses, 'border');
+                });
+                chip.setAttribute('aria-pressed', 'true');
+                chip.classList.add(...activeClasses);
+                chip.classList.remove(...inactiveClasses);
+
+                // filtering
+                const tag = chip.dataset.skillFilter;
+                wrappers.forEach(w => {
+                    const img = w.querySelector('.skill-badge');
+                    const groups = (img.dataset.groups || '').split(',').map(s => s.trim());
+                    const show = tag === 'all' || groups.includes(tag);
+                    w.style.display = show ? '' : 'none';
+                });
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
