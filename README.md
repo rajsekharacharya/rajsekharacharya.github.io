@@ -1,24 +1,27 @@
 <h1 align="center">👋 Hi, I'm Rajsekhar Acharya</h1>
-<h3 align="center">🚀 Full Stack Developer | Spring Boot & Angular Specialist</h3>
+<h3 align="center">🚀 Senior Backend Architect | Distributed Systems Engineer</h3>
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=rajsekharacharya&label=Profile%20Views&color=brightgreen&style=for-the-badge" alt="profile-views" />
   <a href="https://twitter.com/imrajsekhar"><img src="https://img.shields.io/twitter/follow/imrajsekhar?style=for-the-badge&logo=twitter&color=1DA1F2" alt="twitter-follow" /></a>
+  <a href="https://rajsekharacharya.github.io"><img src="https://img.shields.io/badge/Portfolio-Cyber%20Core-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio" /></a>
 </p>
 
 ---
 
-## 💫 About Me  
+## � About Me
 
-- 🔭 Working on **Full Stack Applications (Spring Boot + Angular)**  
-- 🌱 Exploring **Cloud Computing | Microservices | SaaS Platforms**  
-- 💬 Ask me about **Spring Boot | Angular | Java | REST APIs | SaaS Architectures**  
-- 📫 Reach me: **rajsekhar.acharya@gmail.com**  
-- 📄 Resume: [rajsekharacharya.github.io/resume.pdf](https://rajsekharacharya.github.io/resume.pdf)  
+I am a **Systems Engineer** aimed at building high-throughput distributed applications. My expertise lies in architecting scalable solutions using **Spring Boot**, **Microservices**, and **Cloud Infrastructure**.
+
+- 🔭 Currently working on **Next-Gen SaaS Platforms**
+- 🌱 Deep diving into **System Design & Distributed Consensus**
+- 💬 Ask me about **Java | Concurrency | Kafka | Database Sharding**
+- 📫 Connect: **rajsekhar.acharya@gmail.com**
+- 📄 **Resume**: [Download PDF](https://rajsekharacharya.github.io/RajsekharAcharyaResume.pdf)
 
 ---
 
-## 🌐 Connect with Me  
+## 🌐 Connect with Me
 
 <p align="center">
   <a href="https://twitter.com/imrajsekhar"><img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" /></a>
@@ -29,63 +32,52 @@
 
 ---
 
-## 🛠 Tech Stack  
+## 🛠 Tech Stack
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
-  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/Microservices-000000?style=for-the-badge&logo=circleci&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" />
-  <img src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
-  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
-  <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" />
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
+  <img src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" />
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" />
+  <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white" />
 </p>
 
 ---
 
-## 🚀 Featured Projects  
+## 🚀 Featured Deployments
 
-### 🍲 Cuisine Command – Restaurant Management App  
-[![Cuisine Command](https://img.shields.io/badge/Cuisine%20Command-Kitchen%20Companion-brightgreen?style=for-the-badge&logo=springboot)](https://github.com/rajsekharacharya/cuisine-command)  
+### 🍲 [Cuisine Command POS](https://github.com/rajsekharacharya/cuisine-command)
+> **High-Frequency Trading style POS for Restaurants.**
+> *Tech: Angular, Java 17, WebSockets, Reactive Streams.*
 
-### 🚀 Multi-Tenant SaaS Platform  
-[![MultiTenant](https://img.shields.io/badge/MultiTenant-SaaS-blue?style=for-the-badge&logo=java)](https://github.com/rajsekharacharya/Multi-tenant-saas)  
+### ☁️ [Multi-Tenant SaaS Engine](https://github.com/rajsekharacharya/Multi-tenant-saas)
+> **Enterprise Backend with Database-per-Tenant isolation.**
+> *Tech: Spring Boot 3, Flyway, Docker, MySQL.*
 
-### 📊 Account Management Software  
-[![Account Management](https://img.shields.io/badge/Account-Management-orange?style=for-the-badge&logo=java)](https://github.com/rajsekharacharya/Financial-accounting)  
+### 📊 [FinAcc Core](https://github.com/rajsekharacharya/Financial-accounting)
+> **Double-Entry Ledger System with Audit Trails.**
+> *Tech: Java, Spring Security, Hibernate.*
 
-### 🛠️ Resource Forge – Asset Management System  
-[![Resource Forge](https://img.shields.io/badge/Resource%20Forge-Asset%20Management-green?style=for-the-badge&logo=spring)](https://github.com/rajsekharacharya/Resource-Forge)  
+### 🛠️ [Resource Forge](https://github.com/rajsekharacharya/Resource-Forge)
+> **Asset Lifecycle Management System.**
+> *Tech: Python, PostgreSQL, Automation.*
 
 ---
 
-## 📊 GitHub Stats  
+## 📊 GitHub Stats
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=rajsekharacharya&show_icons=true&theme=tokyonight" alt="stats" />
 </p>
-
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=rajsekharacharya&theme=tokyonight" alt="streak" />
 </p>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rajsekharacharya&layout=compact&theme=tokyonight" alt="languages" />
-</p>
-
 ---
-✨ _Passionate about building scalable, high-performance applications that solve real-world problems with clean, efficient code._  
+<p align="center">
+    <i>Constructing the invisible engines of the modern web.</i>
+</p>
