@@ -349,6 +349,75 @@
             background: var(--hover-bg);
         }
 
+        .menu-toggle {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border-radius: 50%;
+            border: 1px solid var(--line-strong);
+            background: transparent;
+            color: var(--text);
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            transition: transform 160ms var(--ease-out), border-color 200ms ease;
+        }
+
+        .menu-toggle:active {
+            transform: scale(0.94);
+        }
+
+        .menu-toggle .x {
+            display: none;
+        }
+
+        .menu-toggle[aria-expanded="true"] .bars {
+            display: none;
+        }
+
+        .menu-toggle[aria-expanded="true"] .x {
+            display: inline;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 68px 0 auto 0;
+            z-index: 49;
+            padding: 8px 20px 24px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            display: grid;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 0s linear 200ms;
+        }
+
+        .mobile-menu.open {
+            visibility: visible;
+            opacity: 1;
+            transform: none;
+            transition-delay: 0s;
+        }
+
+        .mobile-menu a {
+            padding: 16px 0;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            border-bottom: 1px solid var(--line);
+        }
+
+        @media (min-width: 768px) {
+
+            .menu-toggle,
+            .mobile-menu {
+                display: none;
+            }
+        }
+
         .nav .btn {
             height: 40px;
             padding: 0 18px;
@@ -697,15 +766,25 @@
         }
 
         .card--rules .pattern {
-            background-image: repeating-linear-gradient(0deg, var(--pat-line) 0 1px, transparent 1px 34px);
-            -webkit-mask-image: linear-gradient(180deg, transparent 10%, #000 100%);
-            mask-image: linear-gradient(180deg, transparent 10%, #000 100%);
+            background-image:
+                linear-gradient(var(--pat-line), var(--pat-line)),
+                linear-gradient(var(--pat-line), var(--pat-line)),
+                linear-gradient(var(--pat-line), var(--pat-line)),
+                linear-gradient(var(--pat-line), var(--pat-line)),
+                linear-gradient(var(--pat-line), var(--pat-line));
+            background-size: 100% 1px;
+            background-repeat: no-repeat;
+            background-position: 0 10%, 0 19%, 0 28%, 0 37%, 0 46%;
+            -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 55%);
+            mask-image: linear-gradient(180deg, #000 0%, transparent 55%);
         }
 
         .card--diag .pattern {
-            background-image: repeating-linear-gradient(135deg, var(--pat-diag) 0 1px, transparent 1px 18px);
-            -webkit-mask-image: linear-gradient(220deg, #000 0%, transparent 65%);
-            mask-image: linear-gradient(220deg, #000 0%, transparent 65%);
+            background-image:
+                radial-gradient(circle at 100% 0%, transparent 150px, var(--pat-diag) 151px, var(--pat-diag) 152px, transparent 153px),
+                radial-gradient(circle at 100% 0%, transparent 230px, var(--pat-diag) 231px, var(--pat-diag) 232px, transparent 233px),
+                radial-gradient(circle at 100% 0%, transparent 310px, var(--pat-diag) 311px, var(--pat-diag) 312px, transparent 313px),
+                radial-gradient(circle at 100% 0%, transparent 390px, var(--pat-diag) 391px, var(--pat-diag) 392px, transparent 393px);
         }
 
         .card-top {
@@ -1303,6 +1382,9 @@
                 <a href="#experience">Experience</a>
             </nav>
             <div class="nav-actions">
+                <button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                    <span class="bars" aria-hidden="true">&#9776;</span><span class="x" aria-hidden="true">&#10005;</span>
+                </button>
                 <button class="theme-toggle" type="button" id="theme-toggle" data-mode="dark" aria-label="Switch to light theme">
                     <span class="moon" aria-hidden="true">&#9790;</span><span class="sun" aria-hidden="true">&#9728;</span>
                 </button>
@@ -1310,6 +1392,12 @@
             </div>
         </div>
     </header>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#experience">Experience</a>
+    </nav>
 
     <main id="main">
         <!-- Hero -->
@@ -1634,6 +1722,19 @@
             });
             if (mq.addEventListener) mq.addEventListener('change', paint);
             paint();
+
+            // Mobile menu
+            var mbtn = d.getElementById('menu-toggle');
+            var mmenu = d.getElementById('mobile-menu');
+            function setMenu(open) {
+                mmenu.classList.toggle('open', open);
+                mbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                mbtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            }
+            mbtn.addEventListener('click', function () { setMenu(mbtn.getAttribute('aria-expanded') !== 'true'); });
+            mmenu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
+            d.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+            window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) { if (e.matches) setMenu(false); });
 
             // Dynamic numbers
             var start = new Date(2022, 0, 1);
