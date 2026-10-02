@@ -1,513 +1,1661 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rajsekhar Acharya | Senior Backend Architect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Rajsekhar Acharya | Senior Java Backend Developer</title>
     <meta name="description"
-        content="Backend Systems Engineer specializing in Spring Boot, Microservices, and Cloud Architecture." />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        content="Rajsekhar Acharya is a senior Java backend developer in Kolkata. Spring Boot, microservices, Apache Kafka, REST APIs and OAuth2/JWT security." />
+    <meta name="theme-color" content="#0a0a0b" />
+    <link rel="canonical" href="https://rajsekharacharya.github.io/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rajsekhar Acharya | Senior Java Backend Developer" />
+    <meta property="og:description"
+        content="Backend systems that hold up under load. Java, Spring Boot, microservices and Apache Kafka." />
+    <meta property="og:url" content="https://rajsekharacharya.github.io/" />
+    <meta property="og:image" content="https://rajsekharacharya.github.io/images/og-banner.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=JetBrains+Mono:wght@400..600&display=swap"
+        rel="stylesheet" />
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        glass: {
-                            100: 'rgba(255, 255, 255, 0.05)',
-                            200: 'rgba(255, 255, 255, 0.1)',
-                            300: 'rgba(255, 255, 255, 0.2)',
-                        }
-                    }
-                }
+        document.documentElement.classList.add('js');
+        try {
+            var t = localStorage.getItem('theme');
+            if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) { }
+    </script>
+
+    <style>
+        /* ------------------------------------------------------------
+           Tokens
+           Shape rule: buttons and tags are pills, cards are 20px, photo 20px.
+           One accent (signal orange), used on the whole page.
+        ------------------------------------------------------------ */
+        :root {
+            --bg: #0a0a0b;
+            --surface: #121214;
+            --surface-2: #17171a;
+            --line: rgba(255, 255, 255, 0.09);
+            --line-strong: rgba(255, 255, 255, 0.16);
+            --text: #ededee;
+            --muted: #9a9aa3;
+            --accent: #ff6a3d;
+            --accent-ink: #0a0a0b;
+            --accent-soft: rgba(255, 106, 61, 0.12);
+            --accent-hover: #ff805a;
+            --accent-tint: rgba(255, 106, 61, 0.14);
+            --accent-edge: rgba(255, 106, 61, 0.28);
+            --accent-edge-hover: rgba(255, 106, 61, 0.55);
+            --nav-bg: rgba(10, 10, 11, 0.78);
+            --tag-bg: rgba(10, 10, 11, 0.45);
+            --tag-text: #c9c9cf;
+            --hover-bg: rgba(255, 255, 255, 0.06);
+            --pat-dot: rgba(255, 255, 255, 0.14);
+            --pat-line: rgba(255, 255, 255, 0.07);
+            --pat-diag: rgba(255, 255, 255, 0.06);
+            --glow: rgba(255, 106, 61, 0.14);
+            --portrait-fade: rgba(10, 10, 11, 0.45);
+            --icon-filter: brightness(0) invert(1);
+            --scheme: dark;
+
+            --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --radius-card: 20px;
+            --radius-pill: 999px;
+            --wrap: 1200px;
+        }
+
+        /* Light theme: follows the system unless the visitor picked one with the toggle */
+        :root[data-theme="light"] {
+            --bg: #f7f7f8;
+            --surface: #ffffff;
+            --surface-2: #f0f0f2;
+            --line: rgba(10, 10, 11, 0.1);
+            --line-strong: rgba(10, 10, 11, 0.2);
+            --text: #0f0f11;
+            --muted: #5b5b64;
+            --accent: #c2370a;
+            --accent-ink: #ffffff;
+            --accent-soft: rgba(194, 55, 10, 0.1);
+            --accent-hover: #a52f08;
+            --accent-tint: rgba(194, 55, 10, 0.12);
+            --accent-edge: rgba(194, 55, 10, 0.3);
+            --accent-edge-hover: rgba(194, 55, 10, 0.6);
+            --nav-bg: rgba(247, 247, 248, 0.82);
+            --tag-bg: rgba(255, 255, 255, 0.7);
+            --tag-text: #3a3a42;
+            --hover-bg: rgba(10, 10, 11, 0.06);
+            --pat-dot: rgba(10, 10, 11, 0.16);
+            --pat-line: rgba(10, 10, 11, 0.07);
+            --pat-diag: rgba(10, 10, 11, 0.06);
+            --glow: rgba(194, 55, 10, 0.12);
+            --portrait-fade: rgba(247, 247, 248, 0.25);
+            --icon-filter: brightness(0);
+            --scheme: light;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root:not([data-theme="dark"]) {
+                --bg: #f7f7f8;
+                --surface: #ffffff;
+                --surface-2: #f0f0f2;
+                --line: rgba(10, 10, 11, 0.1);
+                --line-strong: rgba(10, 10, 11, 0.2);
+                --text: #0f0f11;
+                --muted: #5b5b64;
+                --accent: #c2370a;
+                --accent-ink: #ffffff;
+                --accent-soft: rgba(194, 55, 10, 0.1);
+                --accent-hover: #a52f08;
+                --accent-tint: rgba(194, 55, 10, 0.12);
+                --accent-edge: rgba(194, 55, 10, 0.3);
+                --accent-edge-hover: rgba(194, 55, 10, 0.6);
+                --nav-bg: rgba(247, 247, 248, 0.82);
+                --tag-bg: rgba(255, 255, 255, 0.7);
+                --tag-text: #3a3a42;
+                --hover-bg: rgba(10, 10, 11, 0.06);
+                --pat-dot: rgba(10, 10, 11, 0.16);
+                --pat-line: rgba(10, 10, 11, 0.07);
+                --pat-diag: rgba(10, 10, 11, 0.06);
+                --glow: rgba(194, 55, 10, 0.12);
+                --portrait-fade: rgba(247, 247, 248, 0.25);
+                --icon-filter: brightness(0);
+                --scheme: light;
             }
         }
-    </script>
-    <style>
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 88px;
+            color-scheme: var(--scheme);
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
-            background-color: #050505;
-            /* Deep Void */
-            color: #e2e8f0;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
             overflow-x: hidden;
         }
 
-        #bg-canvas {
+        ::selection {
+            background: var(--accent);
+            color: var(--accent-ink);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: var(--wrap);
+            margin-inline: auto;
+            padding-inline: max(20px, env(safe-area-inset-left));
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .skip {
+            position: absolute;
+            left: 16px;
+            top: -60px;
+            background: var(--accent);
+            color: var(--accent-ink);
+            padding: 10px 16px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            z-index: 100;
+            transition: top 160ms var(--ease-out);
+        }
+
+        .skip:focus {
+            top: 12px;
+        }
+
+        /* ------------------------------------------------------------
+           Buttons
+        ------------------------------------------------------------ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 24px;
+            border-radius: var(--radius-pill);
+            font-size: 15px;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 160ms var(--ease-out), background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--accent-ink);
+            font-weight: 600;
+        }
+
+        .btn-ghost {
+            border-color: var(--line-strong);
+            color: var(--text);
+        }
+
+        .btn .arrow {
+            transition: transform 200ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .btn-primary:hover {
+                background: var(--accent-hover);
+            }
+
+            .btn-ghost:hover {
+                border-color: var(--text);
+            }
+
+            .btn:hover .arrow {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Nav
+        ------------------------------------------------------------ */
+        .nav {
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0 0 auto 0;
+            z-index: 50;
+            height: 68px;
+            background: var(--nav-bg);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav .wrap {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 4px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .nav-links a {
+            padding: 8px 14px;
+            border-radius: var(--radius-pill);
+            transition: color 200ms ease, background-color 200ms ease;
+        }
+
+        .nav-links a.active {
+            color: var(--text);
+            background: var(--hover-bg);
+        }
+
+        .nav .btn {
+            height: 40px;
+            padding: 0 18px;
+            font-size: 14px;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .nav-links a:hover {
+                color: var(--text);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            padding: 0;
+            border-radius: 50%;
+            border: 1px solid var(--line-strong);
+            background: transparent;
+            color: var(--text);
+            font-size: 17px;
+            line-height: 1;
+            cursor: pointer;
+            transition: transform 160ms var(--ease-out), border-color 200ms ease;
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.94);
+        }
+
+        /* shows the icon of the theme you would switch to */
+        .theme-toggle .sun {
+            display: none;
+        }
+
+        .theme-toggle[data-mode="dark"] .moon {
+            display: none;
+        }
+
+        .theme-toggle[data-mode="dark"] .sun {
+            display: inline;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .theme-toggle:hover {
+                border-color: var(--text);
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Hero
+        ------------------------------------------------------------ */
+        .hero {
+            position: relative;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            padding: 96px 0 56px;
+            isolation: isolate;
+            overflow-x: clip;
+        }
+
+        .hero-grid {
+            display: grid;
+            gap: 48px;
+            align-items: center;
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 14px 7px 12px;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-pill);
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .status i {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        h1.display {
+            font-size: clamp(2.35rem, 6.2vw, 4.25rem);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            font-weight: 600;
+            text-wrap: balance;
+        }
+
+        h1.display em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .lede {
+            margin-top: 24px;
+            max-width: 46ch;
+            font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .lede strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 36px;
+        }
+
+        .portrait {
+            position: relative;
+            justify-self: center;
+            width: min(100%, 420px);
+        }
+
+        .portrait-frame {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            border: 1px solid var(--line-strong);
+            background: var(--surface);
+        }
+
+        .portrait-frame img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            object-position: 52% 28%;
+            filter: saturate(0.9) contrast(1.04);
+        }
+
+        .portrait-frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 55%, var(--portrait-fade));
+            pointer-events: none;
+        }
+
+        .portrait::before {
+            content: "";
+            position: absolute;
+            inset: 14px -14px -14px 14px;
+            border: 1px solid var(--accent);
+            border-radius: var(--radius-card);
+            opacity: 0.55;
             z-index: -1;
         }
 
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.6);
-            /* Dark Blue Tint */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        @media (min-width: 960px) {
+            .hero-grid {
+                grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+                gap: 72px;
+            }
+
+            .portrait {
+                justify-self: end;
+            }
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+        /* Hero entrance */
+        .js .rise {
+            opacity: 0;
+            transform: translateY(14px);
+            animation: rise 700ms var(--ease-out) forwards;
+            animation-delay: calc(var(--i, 0) * 80ms + 80ms);
         }
 
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.3);
+        @keyframes rise {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Stats strip
+        ------------------------------------------------------------ */
+        .stats {
+            border-block: 1px solid var(--line);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .stat {
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .stat+.stat {
+            border-top: 1px solid var(--line);
+        }
+
+        .stat-num {
+            font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            min-width: 2.2ch;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-num span {
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 24ch;
+            line-height: 1.4;
+        }
+
+        @media (min-width: 1000px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .stat {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+                padding: 44px 0;
+            }
+
+            .stat+.stat {
+                border-top: 0;
+                border-left: 1px solid var(--line);
+                padding-left: 32px;
+            }
+
+            .stat-label {
+                max-width: 22ch;
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Section scaffolding
+        ------------------------------------------------------------ */
+        section.block {
+            padding: 112px 0 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4.6vw, 3.5rem);
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            font-weight: 600;
+            text-wrap: balance;
+        }
+
+        .section-title .dim {
+            color: var(--muted);
+        }
+
+        /* ------------------------------------------------------------
+           Projects (bento: 4 items -> 7+5 / 5+7)
+        ------------------------------------------------------------ */
+        .projects-head {
+            margin-bottom: 48px;
+        }
+
+        .bento {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .card {
+            --mx: 50%;
+            --my: 0%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 340px;
+            padding: 32px;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--line);
+            background: var(--surface);
+            overflow: hidden;
+            isolation: isolate;
+            transition: transform 260ms var(--ease-out), border-color 260ms ease;
+        }
+
+        /* cursor spotlight, set on the card itself so only this element restyles */
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(420px circle at var(--mx) var(--my), var(--accent-soft), transparent 70%);
+            opacity: 0;
+            transition: opacity 300ms ease;
+        }
+
+        .card .pattern {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .card--tint {
+            background: linear-gradient(160deg, var(--accent-tint), transparent 55%), var(--surface);
+            border-color: var(--accent-edge);
+        }
+
+        .card--dots .pattern {
+            background-image: radial-gradient(var(--pat-dot) 1px, transparent 1.4px);
+            background-size: 22px 22px;
+            -webkit-mask-image: linear-gradient(200deg, #000 0%, transparent 60%);
+            mask-image: linear-gradient(200deg, #000 0%, transparent 60%);
+        }
+
+        .card--rules .pattern {
+            background-image: repeating-linear-gradient(0deg, var(--pat-line) 0 1px, transparent 1px 34px);
+            -webkit-mask-image: linear-gradient(180deg, transparent 10%, #000 100%);
+            mask-image: linear-gradient(180deg, transparent 10%, #000 100%);
+        }
+
+        .card--diag .pattern {
+            background-image: repeating-linear-gradient(135deg, var(--pat-diag) 0 1px, transparent 1px 18px);
+            -webkit-mask-image: linear-gradient(220deg, #000 0%, transparent 65%);
+            mask-image: linear-gradient(220deg, #000 0%, transparent 65%);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: auto;
+            padding-bottom: 56px;
+        }
+
+        .card-index {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .card-go {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            font-size: 16px;
+            transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 260ms var(--ease-out);
+        }
+
+        .card h3 {
+            font-size: clamp(1.5rem, 2.6vw, 2rem);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            font-weight: 600;
+        }
+
+        .card h3 a::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .card p {
+            margin-top: 12px;
+            color: var(--muted);
+            max-width: 46ch;
+            font-size: 15.5px;
+        }
+
+        .card p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .tags li {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--line-strong);
+            color: var(--tag-text);
+            background: var(--tag-bg);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .card:not(.card--static):hover {
+                transform: translateY(-4px);
+                border-color: var(--line-strong);
+            }
+
+            .card--tint:hover {
+                border-color: var(--accent-edge-hover);
+            }
+
+            .card:hover::before {
+                opacity: 1;
+            }
+
+            .card:hover .card-go {
+                background: var(--accent);
+                color: var(--accent-ink);
+                border-color: var(--accent);
+                transform: rotate(-45deg);
+            }
+        }
+
+        .card:active {
+            transform: scale(0.99);
+        }
+
+        @media (min-width: 900px) {
+            .bento {
+                grid-template-columns: repeat(12, 1fr);
+                gap: 20px;
+            }
+
+            .card {
+                min-height: 380px;
+                padding: 36px;
+            }
+
+            .card.w7 {
+                grid-column: span 7;
+            }
+
+            .card.w5 {
+                grid-column: span 5;
+            }
+
+            .card.w12 {
+                grid-column: span 12;
+            }
+
+            .feature-body {
+                display: grid;
+                grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+                gap: 48px;
+                align-items: end;
+            }
+
+            .card--feature {
+                min-height: 0;
+            }
+        }
+
+        .card-tag {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--muted);
+            padding: 4px 12px;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-pill);
+            background: var(--tag-bg);
+        }
+
+        .card--static:active {
+            transform: none;
+        }
+
+        .card--feature .card-top {
+            padding-bottom: 40px;
+        }
+
+        .card--feature h3 {
+            font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+        }
+
+        .card--feature p {
+            max-width: 62ch;
+        }
+
+        .points {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .points li {
+            position: relative;
+            padding-left: 22px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .points li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.7em;
+            width: 10px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .metric {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .metric span {
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
+            font-weight: 600;
+            letter-spacing: -0.045em;
+            line-height: 1;
+            color: var(--accent);
+        }
+
+        .metric small {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 16ch;
+            line-height: 1.35;
+        }
+
+        /* Repos */
+        .repos {
+            margin-top: 88px;
+        }
+
+        .repos-title {
+            font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .repos ul {
+            display: grid;
+            grid-template-columns: 1fr;
+            column-gap: 48px;
+        }
+
+        .repos a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0;
+            border-top: 1px solid var(--line-strong);
+            transition: color 200ms ease;
+        }
+
+        .repos b {
+            display: block;
+            font-size: 18px;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+        }
+
+        .repos small {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 14.5px;
+        }
+
+        .repos i {
+            font-style: normal;
+            font-size: 18px;
+            color: var(--muted);
+            transition: transform 220ms var(--ease-out), color 200ms ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .repos a:hover b {
+                color: var(--accent);
+            }
+
+            .repos a:hover i {
+                color: var(--accent);
+                transform: translate(3px, -3px);
+            }
+        }
+
+        @media (min-width: 800px) {
+            .repos ul {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Stack
+        ------------------------------------------------------------ */
+        .stack-head {
+            margin-bottom: 56px;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px 32px;
+        }
+
+        .stack-col {
+            border-top: 1px solid var(--line-strong);
+            padding-top: 20px;
+        }
+
+        .stack-col h3 {
+            font-family: var(--font-mono);
+            font-weight: 500;
+            font-size: 12.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 22px;
+        }
+
+        .stack-col li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 0;
+            font-size: 17px;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+        }
+
+        .stack-col img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            filter: var(--icon-filter);
+            opacity: 0.72;
+            transition: opacity 200ms ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .stack-col li:hover img {
+                opacity: 1;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .stack-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 48px 40px;
+            }
+        }
+
+        .stack-col .ic {
+            width: 22px;
+            height: 22px;
+            display: grid;
+            place-items: center;
+            flex: none;
+        }
+
+        .stack-col .ic:empty::before {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--line-strong);
+        }
+
+        /* ------------------------------------------------------------
+           Experience
+        ------------------------------------------------------------ */
+        .exp-grid {
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr;
+        }
+
+        .exp-list {
+            display: grid;
+            gap: 56px;
+        }
+
+        .role {
+            display: grid;
+            gap: 20px;
+            padding-left: 28px;
+            border-left: 1px solid var(--line-strong);
+            position: relative;
+        }
+
+        .role::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 8px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+        }
+
+        .role.is-now::before {
+            background: var(--accent);
+        }
+
+        .role-date {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .role h3 {
+            font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            font-weight: 600;
+        }
+
+        .role-org {
+            margin-top: 4px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .role ul {
+            display: grid;
+            gap: 12px;
+            margin-top: 8px;
+            max-width: 62ch;
+        }
+
+        .role li {
+            position: relative;
+            padding-left: 22px;
+            color: var(--muted);
+        }
+
+        .role li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.72em;
+            width: 10px;
+            height: 1px;
+            background: var(--line-strong);
+        }
+
+        .role li strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .role p.note {
+            color: var(--muted);
+            max-width: 62ch;
+        }
+
+        @media (min-width: 960px) {
+            .exp-grid {
+                grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+                gap: 64px;
+            }
+
+            .exp-grid .section-title {
+                position: sticky;
+                top: 112px;
+                align-self: start;
+            }
+        }
+
+        /* ------------------------------------------------------------
+           Contact
+        ------------------------------------------------------------ */
+        .contact {
+            margin-top: 128px;
+            border-top: 1px solid var(--line);
+            padding: 96px 0 40px;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .contact::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -240px;
+            width: 900px;
+            height: 480px;
+            transform: translateX(-50%);
+            background: radial-gradient(closest-side, var(--glow), transparent);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .contact h2 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.02;
+            letter-spacing: -0.045em;
+            font-weight: 600;
+            text-wrap: balance;
+            max-width: 14ch;
+        }
+
+        .contact-mail {
+            display: inline-block;
+            margin-top: 40px;
+            font-size: clamp(1.25rem, 3.4vw, 2.25rem);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--accent);
+            transition: color 200ms ease;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-phone {
+            margin-top: 20px;
+            color: var(--muted);
+            font-family: var(--font-mono);
+            font-size: 14px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .btn .ico {
+            width: 18px;
+            height: 18px;
+            filter: var(--icon-filter);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .contact-mail:hover {
+                color: var(--accent);
+            }
+        }
+
+        .foot {
+            margin-top: 96px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px 24px;
+            color: var(--muted);
+            font-size: 13.5px;
+        }
+
+        /* ------------------------------------------------------------
+           Scroll reveal (enhancement only)
+        ------------------------------------------------------------ */
+        .js .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+            transition-delay: calc(var(--i, 0) * 70ms);
+        }
+
+        .js .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .js .rise,
+            .js .reveal {
+                animation: none;
+                transition: opacity 200ms ease;
+                transform: none;
+                opacity: 1;
+            }
+
+            .card,
+            .card-go,
+            .btn,
+            .btn .arrow {
+                transition: none;
+            }
         }
     </style>
 </head>
 
-<body class="antialiased selection:bg-blue-500/30 selection:text-blue-200">
+<body>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <!-- 3D Background Canvas -->
-    <canvas id="bg-canvas"></canvas>
+    <header class="nav">
+        <div class="wrap">
+            <a class="brand" href="#top" aria-label="Rajsekhar Acharya, home">
+                <span class="brand-dot" aria-hidden="true"></span>Rajsekhar Acharya
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#work">Work</a>
+                <a href="#stack">Stack</a>
+                <a href="#experience">Experience</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" id="theme-toggle" data-mode="dark" aria-label="Switch to light theme">
+                    <span class="moon" aria-hidden="true">&#9790;</span><span class="sun" aria-hidden="true">&#9728;</span>
+                </button>
+                <a class="btn btn-primary" href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
 
-    <!-- UI Overlay -->
-    <div class="relative z-10">
-
-        <!-- Navigation -->
-        <nav class="fixed w-full z-50 glass-panel border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex-shrink-0 font-mono font-bold text-xl tracking-tighter text-blue-400">
-                        <i class="fa-solid fa-cube mr-2"></i>RAJSEKHAR_DEV
+    <main id="main">
+        <!-- Hero -->
+        <section class="hero" id="top">
+            <div class="wrap">
+                <div class="hero-grid">
+                    <div>
+                        <p class="status rise" style="--i:0"><i aria-hidden="true"></i>Senior Java Backend Developer</p>
+                        <h1 class="display rise" style="--i:1">Backend systems that <em>hold up</em> under load.</h1>
+                        <p class="lede rise" style="--i:2">I'm <strong>Rajsekhar Acharya</strong>. I build Spring Boot microservices and Kafka event-driven systems from Kolkata.</p>
+                        <div class="hero-cta rise" style="--i:3">
+                            <a class="btn btn-primary" href="#work">View projects <span class="arrow" aria-hidden="true">↓</span></a>
+                            <a class="btn btn-ghost" href="RajsekharAcharyaResume.pdf" target="_blank" rel="noopener">Resume <span class="arrow" aria-hidden="true">↗</span></a>
+                        </div>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-8 font-mono text-sm text-gray-400">
-                            <a href="#about" class="hover:text-white transition-colors">/root</a>
-                            <a href="#projects" class="hover:text-white transition-colors">/deployments</a>
-                            <a href="#stack" class="hover:text-white transition-colors">/stack</a>
-                            <a href="#contact" class="hover:text-white transition-colors">/signal</a>
+
+                    <div class="portrait rise" style="--i:2">
+                        <div class="portrait-frame">
+                            <img src="images/profile.webp" width="900" height="1125" alt="Portrait of Rajsekhar Acharya" fetchpriority="high" />
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
+        </section>
 
-        <main class="pt-24 pb-20 px-4 sm:px-6">
-
-            <!-- Hero Section -->
-            <section id="about" class="max-w-7xl mx-auto min-h-[80vh] flex flex-col justify-center">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-8">
-                        <!-- Profile Badge -->
-                        <div class="glass-panel inline-flex items-center gap-3 px-4 py-2 rounded-full">
-                            <img src="images/profile.webp" alt="Profile"
-                                class="w-8 h-8 rounded-full border border-blue-500/50">
-                            <div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-                            <span class="font-mono text-xs text-blue-300">SYSTEM ARCHITECT | ONLINE</span>
-                        </div>
-
-                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight">
-                            Build the <br>
-                            <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Invisible
-                                Engines</span>
-                            of the Web.
-                        </h1>
-
-                        <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
-                            I am <strong>Rajsekhar Acharya</strong>. I engineer high-performance backend systems,
-                            distributed architectures, and scalable APIs that power global enterprises.
-                        </p>
-
-                        <div class="flex flex-wrap gap-4 font-mono text-sm">
-                            <a href="#projects"
-                                class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
-                                <i class="fa-solid fa-rocket"></i> EXPLORE SYSTEMS
-                            </a>
-                            <a href="https://github.com/rajsekharacharya" target="_blank"
-                                class="glass-card px-8 py-4 text-gray-300 rounded-lg flex items-center gap-2 hover:text-white">
-                                <i class="fa-brands fa-github"></i> GITHUB
-                            </a>
-                        </div>
-                        <div class="flex flex-wrap gap-4 font-mono text-sm mt-4">
-                            <a href="RajsekharAcharyaResume.pdf" target="_blank"
-                                class="glass-card px-8 py-4 text-gray-300 rounded-lg flex items-center gap-2 hover:text-white">
-                                <i class="fa-solid fa-file-pdf"></i> DOWNLOAD CV
-                            </a>
-                        </div>
-
-                        <!-- Contact Info in Hero -->
-                        <div class="pt-4 flex flex-col sm:flex-row gap-6 text-sm font-mono text-gray-500">
-                            <div class="flex items-center gap-2 hover:text-blue-400 transition-colors cursor-pointer">
-                                <i class="fa-solid fa-phone"></i> +91 833 589 8602
-                            </div>
-                            <div class="flex items-center gap-2 hover:text-blue-400 transition-colors cursor-pointer">
-                                <i class="fa-solid fa-envelope"></i> rajsekhar.acharya@gmail.com
-                            </div>
-                        </div>
+        <!-- Stats -->
+        <div class="stats">
+            <div class="wrap">
+                <div class="stats-grid">
+                    <div class="stat reveal" style="--i:0">
+                        <div class="stat-num"><span id="years">5</span><span>+</span></div>
+                        <div class="stat-label">years building enterprise production systems</div>
                     </div>
-
-                    <!-- 3D Interactive Zone (Invisible overlay for mouse events) -->
-                    <div class="hidden lg:block h-[500px] w-full flex items-center justify-center">
-                        <div
-                            class="glass-panel p-8 rounded-2xl max-w-sm w-full font-mono text-xs space-y-4 transform rotate-3 hover:rotate-0 transition-transform duration-500 border-blue-500/20">
-                            <div class="flex justify-between border-b border-white/10 pb-2 mb-2">
-                                <span class="text-gray-500">RUNTIME_ENV</span>
-                                <span class="text-green-400">PRODUCTION</span>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-400">Role</span>
-                                    <span class="text-blue-300">Sr. Backend Engineer</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-400">Core</span>
-                                    <span class="text-blue-300">Java 17, Spring Boot</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-400">Latency</span>
-                                    <span class="text-green-400">
-                                        < 15ms</span>
-                                </div>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-white/10">
-                                <span class="text-gray-500">> Initiating Uplink...</span><br>
-                                <span class="text-gray-500">> Connection Est.</span><br>
-                                <span class="animate-pulse text-blue-400">_</span>
-                            </div>
-                        </div>
+                    <div class="stat reveal" style="--i:1">
+                        <div class="stat-num">40<span>%</span></div>
+                        <div class="stat-label">faster deployments after a monolith to microservices migration</div>
+                    </div>
+                    <div class="stat reveal" style="--i:2">
+                        <div class="stat-num">60<span>%</span></div>
+                        <div class="stat-label">less procurement processing time with IoT integration</div>
+                    </div>
+                    <div class="stat reveal" style="--i:3">
+                        <div class="stat-num">6</div>
+                        <div class="stat-label">engineers led in an Agile team</div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Projects Section -->
-            <section id="projects" class="max-w-7xl mx-auto py-24">
-                <div class="flex items-end gap-4 mb-12">
-                    <h2 class="text-3xl md:text-5xl font-bold text-white">Deployed<span
-                            class="text-blue-500">.Systems</span></h2>
-                    <div class="h-px bg-white/10 flex-grow mb-4"></div>
+        <!-- Projects -->
+        <section class="block" id="work">
+            <div class="wrap">
+                <div class="projects-head reveal">
+                    <h2 class="section-title">Selected work</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Project 1 -->
-                    <div class="glass-card rounded-2xl p-8 group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <i class="fa-solid fa-server text-9xl text-blue-500"></i>
+                <div class="bento">
+                    <article class="card card--tint card--dots card--static card--feature w12 reveal">
+                        <div class="pattern" aria-hidden="true"></div>
+                        <div class="card-top">
+                            <span class="card-index">01</span>
+                            <span class="card-tag">In development</span>
                         </div>
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-blue-100 mb-2">Multi-Tenant SaaS</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Enterprise-grade backend implementing <strong>Database-per-tenant</strong> isolation.
-                                Features dynamic routing and automated scaling.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                                <span
-                                    class="px-2 py-1 bg-blue-500/10 text-blue-300 rounded border border-blue-500/20">Spring
-                                    Boot 3</span>
-                                <span
-                                    class="px-2 py-1 bg-blue-500/10 text-blue-300 rounded border border-blue-500/20">MySQL</span>
-                                <span
-                                    class="px-2 py-1 bg-blue-500/10 text-blue-300 rounded border border-blue-500/20">Flyway</span>
-                            </div>
-                            <a href="https://github.com/rajsekharacharya/Multi-tenant-saas" target="_blank"
-                                class="inline-flex items-center text-sm font-semibold text-white hover:text-blue-400 transition-colors">
-                                VIEW SOURCE <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="glass-card rounded-2xl p-8 group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <i class="fa-solid fa-utensils text-9xl text-orange-500"></i>
-                        </div>
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-orange-100 mb-2">Cuisine Command POS</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                High-frequency Restaurant POS. Handles concurrent order streams with reactive
-                                <strong>Angular</strong> frontend and secure REST APIs.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                                <span
-                                    class="px-2 py-1 bg-orange-500/10 text-orange-300 rounded border border-orange-500/20">Angular</span>
-                                <span
-                                    class="px-2 py-1 bg-orange-500/10 text-orange-300 rounded border border-orange-500/20">Java
-                                    17</span>
-                                <span
-                                    class="px-2 py-1 bg-orange-500/10 text-orange-300 rounded border border-orange-500/20">WebSockets</span>
-                            </div>
-                            <a href="https://github.com/rajsekharacharya/cuisine-command" target="_blank"
-                                class="inline-flex items-center text-sm font-semibold text-white hover:text-orange-400 transition-colors">
-                                VIEW SOURCE <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="glass-card rounded-2xl p-8 group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <i class="fa-solid fa-boxes-stacked text-9xl text-green-500"></i>
-                        </div>
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-green-100 mb-2">Resource Forge</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Asset lifecycle management system. Automates complex depreciation calculations and
-                                alerts for renewal compliance.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                                <span
-                                    class="px-2 py-1 bg-green-500/10 text-green-300 rounded border border-green-500/20">Python</span>
-                                <span
-                                    class="px-2 py-1 bg-green-500/10 text-green-300 rounded border border-green-500/20">PostgreSQL</span>
-                            </div>
-                            <a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank"
-                                class="inline-flex items-center text-sm font-semibold text-white hover:text-green-400 transition-colors">
-                                VIEW SOURCE <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="glass-card rounded-2xl p-8 group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <i class="fa-solid fa-file-invoice text-9xl text-purple-500"></i>
-                        </div>
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold text-purple-100 mb-2">FinAcc Core</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Double-entry ledger engine. Enforces strict financial integrity, audit trails, and
-                                automated trial balance generation.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6 font-mono text-xs">
-                                <span
-                                    class="px-2 py-1 bg-purple-500/10 text-purple-300 rounded border border-purple-500/20">Java</span>
-                                <span
-                                    class="px-2 py-1 bg-purple-500/10 text-purple-300 rounded border border-purple-500/20">Audit
-                                    Trail</span>
-                            </div>
-                            <a href="https://github.com/rajsekharacharya/Financial-accounting" target="_blank"
-                                class="inline-flex items-center text-sm font-semibold text-white hover:text-purple-400 transition-colors">
-                                VIEW SOURCE <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Tech Stack -->
-            <section id="stack" class="max-w-7xl mx-auto py-24">
-                <div class="glass-panel rounded-3xl p-12">
-                    <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-3">
-                        <i class="fa-solid fa-layer-group text-blue-500"></i> Technology Stack
-                    </h2>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <div>
-                            <h4 class="font-mono text-xs text-blue-400 mb-4 tracking-widest">BACKEND</h4>
-                            <ul class="space-y-3 text-gray-300 font-medium">
-                                <li>Java 17</li>
-                                <li>Spring Boot 3</li>
-                                <li>Spring Security</li>
-                                <li>Kafka</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-mono text-xs text-blue-400 mb-4 tracking-widest">DATA</h4>
-                            <ul class="space-y-3 text-gray-300 font-medium">
-                                <li>PostgreSQL</li>
-                                <li>MySQL</li>
-                                <li>Redis</li>
-                                <li>Hibernate</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-mono text-xs text-blue-400 mb-4 tracking-widest">DEVOPS</h4>
-                            <ul class="space-y-3 text-gray-300 font-medium">
-                                <li>Docker</li>
-                                <li>Jenkins</li>
-                                <li>AWS</li>
-                                <li>Linux</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-mono text-xs text-blue-400 mb-4 tracking-widest">INTERFACE</h4>
-                            <ul class="space-y-3 text-gray-300 font-medium">
-                                <li>Angular</li>
-                                <li>TypeScript</li>
-                                <li>Tailwind</li>
-                                <li>Bootstrap</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Experience -->
-            <section id="logs" class="max-w-4xl mx-auto py-24">
-                <div class="flex items-end gap-4 mb-12">
-                    <h2 class="text-3xl font-bold text-white">Runtime<span class="text-green-500">.Logs</span></h2>
-                    <div class="h-px bg-white/10 flex-grow mb-4"></div>
-                </div>
-
-                <div class="space-y-8">
-                    <!-- Job 1 -->
-                    <div class="glass-card p-8 rounded-2xl border-l-4 border-blue-500">
-                        <div class="flex flex-col sm:flex-row justify-between mb-4">
+                        <div class="feature-body">
                             <div>
-                                <h3 class="text-xl font-bold text-white">Senior Software Developer</h3>
-                                <p class="text-blue-400">VARELI TECNAC Pvt. Ltd.</p>
+                                <h3>PPP: court booking and match analytics</h3>
+                                <p>An end-to-end platform for pickleball venues. A <strong>Go edge agent on Raspberry Pi</strong> pulls match footage from the venue's NVR and uploads it to cloud storage. A Spring Boot and Angular backend serves it to players, with a live multi-sport scoreboard and a double-entry revenue ledger. Designed to scale to roughly 500 venues.</p>
+                                <ul class="tags" aria-label="Technologies">
+                                    <li>Go</li>
+                                    <li>Raspberry Pi</li>
+                                    <li>MQTT</li>
+                                    <li>Spring Boot</li>
+                                    <li>Angular</li>
+                                    <li>MySQL</li>
+                                    <li>S3 / Backblaze B2</li>
+                                    <li>FFmpeg</li>
+                                    <li>Razorpay</li>
+                                </ul>
                             </div>
-                            <div class="mt-2 sm:mt-0">
-                                <span class="font-mono text-xs px-2 py-1 bg-white/10 rounded text-gray-300">JAN 2022 -
-                                    PRESENT</span>
-                            </div>
+                            <ul class="points" aria-label="Engineering highlights">
+                                <li>Zero-touch device enrolment and MQTT over TLS through NAT.</li>
+                                <li>Crash-safe job pipeline with resumable S3 uploads.</li>
+                                <li>Signed Ed25519 over-the-air updates for the edge agents.</li>
+                            </ul>
                         </div>
-                        <ul class="space-y-2 text-gray-400 list-disc list-inside">
-                            <li>Re-architected monolithic legacy systems into distributed
-                                <strong>Microservices</strong>.
-                            </li>
-                            <li>Enhanced database performance by <strong>30%</strong> via query optimization and Redis
-                                caching.</li>
-                            <li>Implemented secure identity management using <strong>OAuth2 / JWT</strong>.</li>
+                    </article>
+
+                    <article class="card card--diag card--static w5 reveal" style="--i:0">
+                        <div class="pattern" aria-hidden="true"></div>
+                        <div class="card-top">
+                            <span class="card-index">02</span>
+                            <span class="card-tag">Client project</span>
+                        </div>
+                        <div class="metric"><span>60%</span><small>faster procurement processing</small></div>
+                        <h3>SMRPS</h3>
+                        <p>Smart raw material procurement for a manufacturing client. Industrial IoT weighbridges feed a Spring Boot REST API, which <strong>removed all manual data entry</strong>.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Spring Boot</li>
+                            <li>Hibernate / JPA</li>
+                            <li>MySQL</li>
+                            <li>Angular</li>
+                            <li>Docker</li>
+                        </ul>
+                    </article>
+
+                    <article class="card card--rules card--static w7 reveal" style="--i:1">
+                        <div class="pattern" aria-hidden="true"></div>
+                        <div class="card-top">
+                            <span class="card-index">03</span>
+                            <span class="card-tag">Internal</span>
+                        </div>
+                        <div class="metric"><span>40%</span><small>faster deployments</small></div>
+                        <h3>V-Integrate</h3>
+                        <p>Kafka microservices migration of a monolithic ERP. Independently deployable Spring Cloud services communicate over Kafka topics, with <strong>consumer groups</strong> handling order, inventory and billing events.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Java 11</li>
+                            <li>Spring Cloud</li>
+                            <li>Apache Kafka</li>
+                            <li>Docker</li>
+                            <li>CI/CD</li>
+                        </ul>
+                    </article>
+
+                    <article class="card card--dots card--static w7 reveal" style="--i:0">
+                        <div class="pattern" aria-hidden="true"></div>
+                        <div class="card-top">
+                            <span class="card-index">04</span>
+                            <span class="card-tag">Client project</span>
+                        </div>
+                        <div class="metric"><span>5+</span><small>modules in under 12 months</small></div>
+                        <h3>Omnichannel Retail Platform</h3>
+                        <p>Inventory, billing, procurement and stock for a leading retail chain, delivered as <strong>lead of a 6-member Agile team</strong> with OAuth2/JWT authentication and role-based permissions.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Spring Boot</li>
+                            <li>Spring Security</li>
+                            <li>MySQL</li>
+                            <li>Angular</li>
+                        </ul>
+                    </article>
+
+                    <article class="card card--static w5 reveal" style="--i:1">
+                        <div class="pattern" aria-hidden="true"></div>
+                        <div class="card-top">
+                            <span class="card-index">05</span>
+                            <span class="card-tag">Production</span>
+                        </div>
+                        <h3>Ranfort Wellness ERP</h3>
+                        <p>Full-stack ERP covering marketing, sales, finance and clinical service delivery, with Razorpay payment reconciliation and <strong>Meta and Google Ads spend sync</strong>.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Spring Boot 3</li>
+                            <li>Java 17</li>
+                            <li>Angular 21</li>
+                            <li>PostgreSQL</li>
+                            <li>Flyway</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <div class="repos reveal">
+                    <h3 class="repos-title">Also on GitHub</h3>
+                    <ul>
+                        <li><a href="https://github.com/rajsekharacharya/Multi-tenant-saas" target="_blank" rel="noopener"><span><b>Multi-Tenant SaaS</b><small>Database-per-tenant isolation with dynamic routing</small></span><i aria-hidden="true">↗</i></a></li>
+                        <li><a href="https://github.com/rajsekharacharya/cuisine-command" target="_blank" rel="noopener"><span><b>Cuisine Command</b><small>Restaurant POS with WebSockets and Angular</small></span><i aria-hidden="true">↗</i></a></li>
+                        <li><a href="https://github.com/rajsekharacharya/Resource-Forge" target="_blank" rel="noopener"><span><b>Resource Forge</b><small>Asset lifecycle and depreciation tracking</small></span><i aria-hidden="true">↗</i></a></li>
+                        <li><a href="https://github.com/rajsekharacharya/Financial-accounting" target="_blank" rel="noopener"><span><b>FinAcc Core</b><small>Double-entry ledger with audit trails</small></span><i aria-hidden="true">↗</i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack -->
+        <section class="block" id="stack">
+            <div class="wrap">
+                <div class="stack-head reveal">
+                    <h2 class="section-title">Tools I build with</h2>
+                </div>
+
+                <div class="stack-grid">
+                    <div class="stack-col reveal" style="--i:0">
+                        <h3>Backend</h3>
+                        <ul>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Java 8, 11, 17</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Spring Boot</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Spring Cloud</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hibernate/hibernate-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Spring Data JPA, Hibernate</li>
                         </ul>
                     </div>
-
-                    <!-- Education -->
-                    <div class="glass-card p-8 rounded-2xl border-l-4 border-gray-600">
-                        <div class="flex flex-col sm:flex-row justify-between mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">B.Tech Electrical Engineering</h3>
-                                <p class="text-gray-400">Academy of Technology</p>
-                            </div>
-                            <div class="mt-2 sm:mt-0">
-                                <span class="font-mono text-xs px-2 py-1 bg-white/10 rounded text-gray-300">2013 -
-                                    2017</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-400">Graduated with Honors. Specialization in Electrical Engineering.</p>
+                    <div class="stack-col reveal" style="--i:1">
+                        <h3>Architecture and messaging</h3>
+                        <ul>
+                            <li><span class="ic"></span>Microservices</li>
+                            <li><span class="ic"></span>Event-driven design</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Apache Kafka</li>
+                            <li><span class="ic"></span>MQTT</li>
+                        </ul>
+                    </div>
+                    <div class="stack-col reveal" style="--i:2">
+                        <h3>Data</h3>
+                        <ul>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>MySQL</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>PostgreSQL</li>
+                            <li><span class="ic"></span>Schema design</li>
+                            <li><span class="ic"></span>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="stack-col reveal" style="--i:0">
+                        <h3>Security</h3>
+                        <ul>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Spring Security</li>
+                            <li><span class="ic"></span>OAuth2 and JWT</li>
+                            <li><span class="ic"></span>Role-based access control</li>
+                        </ul>
+                    </div>
+                    <div class="stack-col reveal" style="--i:1">
+                        <h3>DevOps and tools</h3>
+                        <ul>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Docker</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>GitHub Actions and CI/CD</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Nginx</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Linux</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Maven</li>
+                        </ul>
+                    </div>
+                    <div class="stack-col reveal" style="--i:2">
+                        <h3>Also</h3>
+                        <ul>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Angular</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Go</li>
+                            <li><span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" loading="lazy" onerror="this.remove()"></span>Python</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-
-        </main>
-
-        <!-- Footer -->
-        <footer id="contact" class="glass-panel border-t border-white/5 py-12 mt-12">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-                <div class="flex justify-center gap-8 mb-8">
-                    <a href="https://github.com/rajsekharacharya"
-                        class="text-gray-400 hover:text-white text-2xl transition"><i
-                            class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/rajsekhar-acharya"
-                        class="text-gray-400 hover:text-white text-2xl transition"><i
-                            class="fa-brands fa-linkedin"></i></a>
-                    <a href="mailto:rajsekhar.acharya@gmail.com"
-                        class="text-gray-400 hover:text-white text-2xl transition"><i
-                            class="fa-solid fa-envelope"></i></a>
-                </div>
-                <p class="font-mono text-xs text-gray-500">
-                    &copy; <span id="year"></span> Rajsekhar Acharya. All Systems Operational.<br>
-                    <span class="block mt-2 text-gray-600">Renderer: Three.js r128 | Theme: Cyber Core</span>
-                </p>
             </div>
-        </footer>
+        </section>
 
-    </div>
+        <!-- Experience -->
+        <section class="block" id="experience">
+            <div class="wrap">
+                <div class="exp-grid">
+                    <h2 class="section-title reveal">Where I've <span class="dim">worked and studied</span></h2>
 
-    <!-- Three.js implementation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+                    <div class="exp-list">
+                        <article class="role is-now reveal">
+                            <div>
+                                <p class="role-date">Jan 2022 to present · Kolkata, India</p>
+                                <h3 style="margin-top:10px">Senior Java Backend Developer</h3>
+                                <p class="role-org">Vareli Tecnac Pvt Ltd</p>
+                            </div>
+                            <ul>
+                                <li>Designed REST APIs on Spring Boot, Spring Cloud and Spring Data JPA over MySQL and PostgreSQL, documented with Swagger/OpenAPI and tested with JUnit 5.</li>
+                                <li>Secured all five production applications with Spring Security, <strong>OAuth2/JWT</strong> and role-based access control, with zero production security incidents.</li>
+                                <li>Led a <strong>6-member Agile team</strong> and owned a monolith to microservices migration that cut deployment time by <strong>40%</strong>.</li>
+                            </ul>
+                        </article>
+
+                        <article class="role reveal">
+                            <div>
+                                <p class="role-date">2013 to 2017</p>
+                                <h3 style="margin-top:10px">B.Tech, Electrical Engineering</h3>
+                                <p class="role-org">Academy of Technology, Hooghly</p>
+                            </div>
+                        </article>
+
+                        <article class="role reveal">
+                            <div>
+                                <p class="role-date">In progress</p>
+                                <h3 style="margin-top:10px">AWS Certified Solutions Architect, Associate</h3>
+                            </div>
+                            <p class="note">Languages: English (professional), Bengali (native), Hindi (intermediate).</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact -->
+    <footer class="contact" id="contact">
+        <div class="wrap">
+            <h2 class="reveal">Have a system to build?</h2>
+            <a class="contact-mail reveal" style="--i:1" href="mailto:rajsekhar.acharya@gmail.com">rajsekhar.acharya@gmail.com</a>
+            <p class="contact-phone reveal" style="--i:2"><a href="tel:+918335898602">+91 833 589 8602</a> · Kolkata, West Bengal, India</p>
+            <div class="contact-links reveal" style="--i:3">
+                <a class="btn btn-ghost" href="https://github.com/rajsekharacharya" target="_blank" rel="noopener">
+                    <img class="ico" src="https://cdn.simpleicons.org/github/ffffff" alt="" width="18" height="18">GitHub</a>
+                <a class="btn btn-ghost" href="https://linkedin.com/in/rajsekhar-acharya" target="_blank" rel="noopener">
+                    <img class="ico" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="" width="18" height="18">LinkedIn</a>
+                <a class="btn btn-ghost" href="RajsekharAcharyaResume.pdf" target="_blank" rel="noopener">Resume <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="foot">
+                <span>&copy; <span id="year">2026</span> Rajsekhar Acharya</span>
+                <span>Hand-built with HTML and CSS</span>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Three.js Scene Setup
-        const canvas = document.querySelector('#bg-canvas');
-        const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x050505, 0.002); // Dark fog for depth
+        (function () {
+            var d = document;
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
+            // Theme toggle: follows the system until the visitor chooses
+            var root = d.documentElement;
+            var tbtn = d.getElementById('theme-toggle');
+            var meta = d.querySelector('meta[name="theme-color"]');
+            var mq = window.matchMedia('(prefers-color-scheme: light)');
+            function current() {
+                return root.getAttribute('data-theme') || (mq.matches ? 'light' : 'dark');
+            }
+            function paint() {
+                var m = current();
+                tbtn.setAttribute('data-mode', m);
+                tbtn.setAttribute('aria-label', m === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+                if (meta) meta.setAttribute('content', m === 'dark' ? '#0a0a0b' : '#f7f7f8');
+            }
+            tbtn.addEventListener('click', function () {
+                var next = current() === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('theme', next); } catch (e) { }
+                paint();
+            });
+            if (mq.addEventListener) mq.addEventListener('change', paint);
+            paint();
 
-        // GEOMETRY: The "Network"
-        const geometry = new THREE.BufferGeometry();
-        const counts = 2000; // Particle count
-        const positions = new Float32Array(counts * 3);
+            // Dynamic numbers
+            var start = new Date(2022, 0, 1);
+            var years = Math.round((Date.now() - start) / 31557600000);
+            var y = d.getElementById('years');
+            if (y && years > 0) y.textContent = years;
+            var yr = d.getElementById('year');
+            if (yr) yr.textContent = new Date().getFullYear();
 
-        for (let i = 0; i < counts * 3; i++) {
-            positions[i] = (Math.random() - 0.5) * 20; // Spread points in space
-        }
+            // Scroll reveal
+            var items = d.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window && !reduce) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                    });
+                }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+                items.forEach(function (el) { io.observe(el); });
+            } else {
+                items.forEach(function (el) { el.classList.add('in'); });
+            }
 
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            // Card spotlight follows the pointer (writes only to the hovered card)
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
+                d.querySelectorAll('.card').forEach(function (card) {
+                    card.addEventListener('pointermove', function (e) {
+                        var r = card.getBoundingClientRect();
+                        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+                    });
+                });
+            }
 
-        const material = new THREE.PointsMaterial({
-            size: 0.03,
-            color: 0x3b82f6, // Brand Blue
-            transparent: true,
-            opacity: 0.8,
-        });
-
-        const particles = new THREE.Points(geometry, material);
-        scene.add(particles);
-
-        // Lines connecting close particles (Simulating Core Connections)
-        // Note: For performance, we'll keep lines static or simple. 
-        // Let's settle for a "Grid" floor to ground the scene visually
-        const gridHelper = new THREE.GridHelper(30, 30, 0x1e293b, 0x0f172a);
-        gridHelper.position.y = -2;
-        scene.add(gridHelper);
-
-        camera.position.z = 5;
-
-        // Interaction
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
-        });
-
-        // Animation Loop
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate entire particle system slowly
-            particles.rotation.y += 0.001;
-            particles.rotation.x += 0.0005;
-
-            // Mouse Interaction Parallax
-            camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY * 2 - camera.position.y) * 0.05;
-            camera.lookAt(scene.position);
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Check window resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        document.getElementById('year').innerText = new Date().getFullYear();
+            // Active nav link
+            var links = {};
+            d.querySelectorAll('.nav-links a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+            if ('IntersectionObserver' in window) {
+                var so = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        var a = links[e.target.id];
+                        if (a) a.classList.toggle('active', e.isIntersecting);
+                    });
+                }, { rootMargin: '-45% 0px -50% 0px' });
+                Object.keys(links).forEach(function (id) {
+                    var s = d.getElementById(id);
+                    if (s) so.observe(s);
+                });
+            }
+        })();
     </script>
 </body>
 
